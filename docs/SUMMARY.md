@@ -11,6 +11,8 @@
   - [Ejercicios: cómputo](./ejercicios/02-computo.md)
   - [Costos: cómputo](./costos/02-computo.md)
 - [Almacenamiento](./03-almacenamiento.md)
+  - [Ejercicios: almacenamiento](./ejercicios/03-almacenamiento.md)
+  - [Costos: almacenamiento](./costos/03-almacenamiento.md)
 - [Redes y VPC](./04-redes-y-vpc.md)
 - [Identidad y accesos](./05-identidad-y-accesos.md)
 - [Servicios manejados](./06-servicios-manejados.md)

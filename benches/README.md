@@ -12,3 +12,6 @@ capacidad o selección de plataforma.
 - `02. Cómputo`: no agrega benchmark. El capítulo razona capacidad, límites,
   ciclo de vida y elasticidad; medir `recommend_compute` no representaría costo
   real de plataforma.
+- `03. Almacenamiento`: no agrega benchmark. El capítulo razona retención,
+  recuperación, consistencia y fuente de verdad; medir `recommend_storage` no
+  representaría costo real de almacenamiento cloud.
