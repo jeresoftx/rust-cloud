@@ -21,6 +21,12 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   administración amplia que revela hallazgos educativos.
 - `managed_services.rs`: compara servicios manejados por responsabilidad
   delegada, estado durable y recuperación probada.
+- `soluciones/managed_services_nivel_1.rs`: solución del ejercicio básico de
+  base de datos manejada con restauración probada.
+- `soluciones/managed_services_nivel_2.rs`: solución del ejercicio intermedio
+  de estado durable sin recuperación.
+- `soluciones/managed_services_nivel_3.rs`: solución del ejercicio avanzado de
+  cola temporal frente a servicio crítico.
 - `soluciones/compute_nivel_1.rs`: solución del ejercicio básico de recursos y
   límites.
 - `soluciones/compute_nivel_2.rs`: solución del ejercicio intermedio de

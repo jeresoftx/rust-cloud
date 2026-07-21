@@ -74,5 +74,6 @@ esperada es:
 
 ## Siguiente paso natural
 
-Completar el milestone `06. Servicios manejados` con el flujo restante:
+Iniciar el milestone `07. Serverless` con el flujo completo: especificación,
+modelo Rust mínimo, capítulo narrativo, diagrama Mermaid, ejemplos progresivos,
 ejercicios, soluciones y análisis de costos.
