@@ -94,6 +94,7 @@ cargo test --doc
 cargo bench --all-targets
 node scripts/verify-course-links.mjs
 node scripts/verify-manifest-consistency.mjs
+node scripts/verify-cargo-examples.mjs
 node scripts/verify-editorial-status.mjs
 ```
 

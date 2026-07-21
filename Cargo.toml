@@ -12,6 +12,10 @@ categories = ["development-tools"]
 [dependencies]
 
 [[example]]
+name = "service_models"
+path = "examples/service_models.rs"
+
+[[example]]
 name = "service_models_nivel_1"
 path = "examples/soluciones/service_models_nivel_1.rs"
 
@@ -24,6 +28,10 @@ name = "service_models_nivel_3"
 path = "examples/soluciones/service_models_nivel_3.rs"
 
 [[example]]
+name = "compute"
+path = "examples/compute.rs"
+
+[[example]]
 name = "compute_nivel_1"
 path = "examples/soluciones/compute_nivel_1.rs"
 
@@ -34,6 +42,10 @@ path = "examples/soluciones/compute_nivel_2.rs"
 [[example]]
 name = "compute_nivel_3"
 path = "examples/soluciones/compute_nivel_3.rs"
+
+[[example]]
+name = "storage"
+path = "examples/storage.rs"
 
 [[example]]
 name = "storage_nivel_1"
