@@ -19,6 +19,8 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   privadas, ruta pública explícita y reglas de firewall con propósito.
 - `iam.rs`: compara un plan de acceso de bajo riesgo con un caso de
   administración amplia que revela hallazgos educativos.
+- `managed_services.rs`: compara servicios manejados por responsabilidad
+  delegada, estado durable y recuperación probada.
 - `soluciones/compute_nivel_1.rs`: solución del ejercicio básico de recursos y
   límites.
 - `soluciones/compute_nivel_2.rs`: solución del ejercicio intermedio de

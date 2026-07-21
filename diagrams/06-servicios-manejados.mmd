@@ -1,0 +1,15 @@
+flowchart TD
+    A["Capacidad requerida"] --> B["Servicio manejado"]
+    B --> C["Responsabilidades delegadas"]
+    B --> D["Responsabilidades retenidas"]
+    C --> E["Proveedor opera la base"]
+    D --> F["Equipo conserva criterio"]
+    F --> G["Datos y permisos"]
+    F --> H["Observabilidad y costo"]
+    F --> I["Recuperación probada"]
+    I --> J["Evaluación"]
+    J --> K{"Hallazgos"}
+    K -->|"sin hallazgos"| L["Bajo riesgo educativo"]
+    K -->|"sin dueño"| M["Riesgo operativo visible"]
+    K -->|"estado sin recuperación"| M
+    K -->|"crítico sin restore"| M

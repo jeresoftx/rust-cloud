@@ -4,8 +4,10 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 06. Servicios manejados
-- **Issues:** #21, #22
+- **Issues:** #21, #22, #23
 - **Módulo Rust:** `src/managed_services.rs`
+- **Diagrama:** `diagrams/06-servicios-manejados.mmd`
+- **Ejemplo:** `examples/managed_services.rs`
 
 ## Concepto
 
@@ -19,6 +21,22 @@ En este curso, los servicios manejados se estudian como una frontera de
 delegación. La pregunta central no es "¿qué servicio ofrece el proveedor?",
 sino "¿qué operación dejamos en manos de la plataforma y qué responsabilidad
 seguimos conservando?".
+
+## Imagen mental
+
+Piensa en un taller que renta máquinas especializadas.
+
+- El **proveedor** mantiene la máquina, repuestos, energía y monitoreo base.
+- El **equipo** decide qué produce, con qué insumos, bajo qué permisos y cómo
+  valida que el producto final sirve.
+- El **contrato operativo** dice qué pasa si la máquina falla, cuándo se le da
+  mantenimiento y qué límites no debe cruzar.
+- La **recuperación** no es tener una copia guardada: es saber restaurar y
+  comprobar que el sistema vuelve.
+
+La metáfora separa comodidad de responsabilidad. Usar una máquina administrada
+puede ser una excelente decisión, pero no elimina diseño, permisos, datos,
+observabilidad ni costos.
 
 ## Problema
 
@@ -96,6 +114,114 @@ dependencias externas:
 El módulo no debe intentar reemplazar catálogos de proveedor. Su función es
 pedagógica: hacer visible qué se delega, qué se conserva y qué costo operativo
 queda.
+
+## Comparación educativa
+
+| Elemento | Qué decide | Qué no decide por sí solo | Riesgo común |
+|----------|------------|----------------------------|--------------|
+| Capacidad | Qué problema resuelve el servicio | Producto comercial correcto | Elegir por marca antes que por necesidad |
+| Delegación | Qué opera el proveedor | Responsabilidad total | Creer que manejado significa sin operación |
+| Responsabilidad retenida | Qué conserva el equipo | Implementación automática | Olvidar permisos, datos, costo y observabilidad |
+| Criticidad | Qué tanto duele una falla | Estrategia de recuperación | Tratar servicios críticos como accesorios |
+| Recuperación | Cómo se vuelve después de fallar | Que el restore funcione | Tener backup sin prueba de restauración |
+| Dueño operativo | Quién cuida el servicio | Que todo esté bien configurado | Servicios sin responsable claro |
+
+## Cómo leer el módulo Rust
+
+El módulo `managed_services` empieza con requerimientos explícitos:
+
+```rust
+use rust_cloud::managed_services::{
+    Criticality, ManagedCapability, ManagedServiceProfile,
+    ManagedServiceRequirements, RecoveryStrategy,
+};
+
+let profile = ManagedServiceProfile::new(
+    "academy-db",
+    ManagedServiceRequirements {
+        capability: ManagedCapability::Database,
+        durable_state: true,
+        criticality: Criticality::High,
+        recovery: RecoveryStrategy::TestedRestore,
+        has_owner: true,
+        purpose: "guardar progreso y evaluaciones del estudiante",
+    },
+)
+.unwrap();
+
+assert!(profile.evaluate().is_low_risk());
+```
+
+Un servicio crítico con estado durable y sin restauración probada produce un
+hallazgo educativo:
+
+```rust
+use rust_cloud::managed_services::{
+    Criticality, ManagedCapability, ManagedServiceFinding,
+    ManagedServiceProfile, ManagedServiceRequirements, RecoveryStrategy,
+};
+
+let profile = ManagedServiceProfile::new(
+    "academy-db",
+    ManagedServiceRequirements {
+        capability: ManagedCapability::Database,
+        durable_state: true,
+        criticality: Criticality::High,
+        recovery: RecoveryStrategy::BackupOnly,
+        has_owner: true,
+        purpose: "guardar progreso y evaluaciones del estudiante",
+    },
+)
+.unwrap();
+
+assert!(profile.evaluate().findings().contains(
+    &ManagedServiceFinding::CriticalServiceWithoutTestedRecovery("academy-db"),
+));
+```
+
+El objetivo del modelo no es decir qué servicio comprar. El objetivo es obligar
+a nombrar la capacidad, la responsabilidad delegada, la responsabilidad
+retenida, la criticidad y la recuperación antes de convertir la decisión en
+infraestructura.
+
+## Diagrama
+
+El diagrama del capítulo vive en `diagrams/06-servicios-manejados.mmd`. Resume
+la lectura principal:
+
+```text
+capacidad -> delegación -> responsabilidad retenida -> recuperación -> hallazgos
+```
+
+## Ejemplo ejecutable
+
+El ejemplo `examples/managed_services.rs` compara una base de datos administrada
+con restauración probada contra un índice de búsqueda durable sin estrategia de
+recuperación.
+
+```bash
+cargo run --example managed_services
+```
+
+El ejemplo no contacta proveedores ni consulta precios. Su intención es mostrar
+qué preguntas operativas deben quedar visibles antes de elegir un servicio real.
+
+## Práctica sugerida
+
+Antes de adoptar un servicio manejado, escribe:
+
+1. Capacidad: qué problema resuelve.
+2. Estado: si conserva datos durables o solo procesa flujo temporal.
+3. Delegación: qué operación queda en manos del proveedor.
+4. Responsabilidad retenida: qué sigue cuidando el equipo.
+5. Criticidad: qué pasa si falla.
+6. Recuperación: cómo se respalda, restaura y prueba.
+7. Dueño: quién responde por configuración, costo y revisión.
+8. Límites: cuotas, throughput, tamaño, latencia y región.
+9. Salida: qué tan difícil sería migrar o extraer datos.
+
+Si el servicio es crítico y nadie ha probado restaurarlo, todavía no está listo
+como decisión de producción.
 
 ## Decisiones registradas
 

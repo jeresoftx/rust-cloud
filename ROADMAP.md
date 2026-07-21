@@ -75,5 +75,4 @@ esperada es:
 ## Siguiente paso natural
 
 Completar el milestone `06. Servicios manejados` con el flujo restante:
-capítulo narrativo, diagrama Mermaid, ejemplos progresivos, ejercicios,
-soluciones y análisis de costos.
+ejercicios, soluciones y análisis de costos.
