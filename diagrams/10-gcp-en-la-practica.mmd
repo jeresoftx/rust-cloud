@@ -1,0 +1,24 @@
+flowchart TD
+    A["Necesidad de producto"] --> B["Capacidad del curso"]
+    B --> C["Servicio GCP candidato"]
+    C --> D["Proyecto y ambiente"]
+    D --> E["Identidad y permisos"]
+    E --> F["Red y límites"]
+    F --> G["Observabilidad y labels"]
+    G --> H["Decisión practicable"]
+
+    C --> I{"¿Representa la capacidad?"}
+    I -->|"sí"| D
+    I -->|"no"| J["Hallazgo: servicio sin mapa conceptual"]
+
+    D --> K{"¿Tiene proyecto responsable?"}
+    K -->|"sí"| E
+    K -->|"no"| L["Hallazgo: frontera de gobierno ausente"]
+
+    E --> M{"¿Usa identidad administrada?"}
+    M -->|"sí"| F
+    M -->|"no"| N["Hallazgo: llave o credencial permanente"]
+
+    G --> O{"¿Tiene labels y señales?"}
+    O -->|"sí"| H
+    O -->|"no"| P["Hallazgo: costo u operación invisible"]
