@@ -70,7 +70,7 @@
       "number": 5,
       "title": "Identidad y accesos",
       "slug": "identidad-y-accesos",
-      "status": "draft",
+      "status": "implemented",
       "milestone": "05. Identidad y accesos",
       "document": "docs/05-identidad-y-accesos.md",
       "module": "src/iam.rs",
