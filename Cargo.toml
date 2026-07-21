@@ -68,6 +68,10 @@ name = "iam_nivel_3"
 path = "examples/soluciones/iam_nivel_3.rs"
 
 [[example]]
+name = "managed_services"
+path = "examples/managed_services.rs"
+
+[[example]]
 name = "networking_nivel_1"
 path = "examples/soluciones/networking_nivel_1.rs"
 
