@@ -4,8 +4,10 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 08. Costos y FinOps
-- **Issues:** #29, #30
+- **Issues:** #29, #30, #31
 - **Módulo Rust:** `src/finops.rs`
+- **Diagrama:** `diagrams/08-costos-y-finops.mmd`
+- **Ejemplo:** `examples/finops.rs`
 
 ## Concepto
 
@@ -117,6 +119,19 @@ externas:
 El módulo no debe intentar calcular precios reales. Su función es pedagógica:
 hacer visibles las variables que explican por qué aparece un costo.
 
+## Lectura del modelo
+
+`FinOpsProfile` junta cuatro preguntas que suelen quedar separadas:
+
+1. **Qué se consume:** categoría de costo, ambiente y patrón de uso.
+2. **Por qué se consume:** propósito, criticidad e intención de optimización.
+3. **Quién lo cuida:** dueño y control de presupuesto.
+4. **Cómo se observa:** visibilidad, unidad económica y límite de elasticidad.
+
+El modelo prefiere nombres explícitos sobre fórmulas. Un estudiante no necesita
+memorizar precios para detectar que un gasto sin dueño, sin presupuesto, sin
+unidad económica y sin límite de elasticidad todavía no está gobernado.
+
 ## Cómo leer el módulo Rust
 
 El módulo `finops` empieza con un perfil explícito:
@@ -181,6 +196,70 @@ assert!(profile.evaluate().findings().contains(
     &FinOpsFinding::UnboundedElasticity("preview-workers"),
 ));
 ```
+
+El objetivo del modelo no es decidir si un recurso es caro o barato. El objetivo
+es obligar a explicar qué valor compra, qué señal lo vuelve atribuible y qué
+tradeoff aparece antes de optimizarlo.
+
+## Diagrama
+
+El diagrama del capítulo vive en `diagrams/08-costos-y-finops.mmd`. Resume la
+lectura principal:
+
+```text
+recurso -> unidad de costo -> dueño/proposito -> visibilidad -> presupuesto -> tradeoff -> decision
+```
+
+La rama crítica del diagrama aparece cuando una señal no puede atribuirse o
+cuando un recurso elástico no tiene límite. En ambos casos, el problema no es
+solo económico: también es de arquitectura y operación.
+
+El diagrama separa tres tipos de lectura:
+
+1. **Lectura normal:** el costo tiene unidad, dueño, propósito, señal,
+   presupuesto y decisión explícita.
+2. **Lectura de gobierno:** si el costo no se puede atribuir, el primer trabajo
+   no es ahorrar; es volverlo explicable.
+3. **Lectura de elasticidad:** si un recurso puede crecer sin límite, la
+   arquitectura debe declarar qué protege a la factura, a las dependencias y al
+   producto.
+
+## Ejemplo ejecutable
+
+El ejemplo `examples/finops.rs` compara un costo de producción atribuido y
+gobernable contra invocaciones de desarrollo que crecen sin dueño, presupuesto
+ni unidad económica. También incluye un recurso productivo casi sin uso para
+mostrar que "barato" y "gobernado" no son sinónimos.
+
+```bash
+cargo run --example finops
+```
+
+Salida esperada:
+
+```text
+academy-api: costo atribuido y gobernable
+preview-workers: 5 hallazgos educativos
+legacy-worker: 1 hallazgos educativos
+```
+
+El ejemplo no consulta proveedores ni precios actuales. Su intención es mostrar
+qué señales deben existir antes de abrir una calculadora o una factura real.
+
+## Ejemplos progresivos
+
+El capítulo usa tres niveles de lectura:
+
+| Nivel | Escenario | Señal principal | Aprendizaje |
+|-------|-----------|-----------------|-------------|
+| Básico | API de producción con presupuesto y unidad económica | Sin hallazgos | El costo puede defenderse porque tiene dueño, valor y control |
+| Intermedio | Workers de preview con invocaciones crecientes | Elasticidad sin límite | La elasticidad necesita presupuesto, atribución y límite explícito |
+| Avanzado | Worker productivo casi inactivo | Recurso idle | Un recurso puede ser estable y aun así revelar desperdicio |
+
+Estos escenarios son deliberadamente pequeños. La intención no es simular una
+factura completa, sino entrenar la pregunta correcta antes de comparar
+proveedores: qué decisión técnica explica el consumo y qué acción responsable
+permite tomar.
 
 ## Decisiones registradas
 

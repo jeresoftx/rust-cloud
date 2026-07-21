@@ -88,6 +88,10 @@ name = "serverless"
 path = "examples/serverless.rs"
 
 [[example]]
+name = "finops"
+path = "examples/finops.rs"
+
+[[example]]
 name = "serverless_nivel_1"
 path = "examples/soluciones/serverless_nivel_1.rs"
 

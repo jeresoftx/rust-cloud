@@ -1,0 +1,23 @@
+flowchart TD
+    A["Recurso cloud"] --> B["Unidad de costo"]
+    B --> C["Dueño y propósito"]
+    C --> D["Visibilidad"]
+    D --> E["Presupuesto y alerta"]
+    E --> F["Tradeoff de optimización"]
+    F --> G["Decisión responsable"]
+
+    D --> H{"¿Se puede atribuir?"}
+    H -->|"sí"| E
+    H -->|"no"| I["Hallazgo: baja visibilidad"]
+
+    E --> J{"¿Tiene límite de elasticidad?"}
+    J -->|"sí"| F
+    J -->|"no"| K["Hallazgo: elasticidad sin límite"]
+
+    C --> L{"¿Tiene propósito?"}
+    L -->|"sí"| D
+    L -->|"no"| M["Hallazgo: falta propósito"]
+
+    B --> N{"¿Está casi sin uso en producción?"}
+    N -->|"no"| C
+    N -->|"sí"| O["Hallazgo: recurso idle"]
