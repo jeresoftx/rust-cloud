@@ -5,6 +5,7 @@
 - [Mapa global del curso](./mapa-global.md)
 - [Navegación y enlaces](./navegacion-y-enlaces.md)
 - [Checklist de revisión humana](./checklist-revision-capitulo.md)
+- [Publicación candidata interna](./publicacion-candidata.md)
 - [Modelos de servicio](./01-modelos-de-servicio.md)
   - [Ejercicios: modelos de servicio](./ejercicios/01-modelos-de-servicio.md)
   - [Costos: modelos de servicio](./costos/01-modelos-de-servicio.md)
