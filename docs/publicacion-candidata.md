@@ -9,6 +9,9 @@ Este documento registra el primer corte candidato interno del curso. No publica
 el curso y no cambia ningún capítulo a `reviewed` ni `published`. Su función es
 dejar evidencia para la revisión humana de Joel.
 
+La bitácora de PRs fusionados en modo autónomo vive en
+`docs/bitacora-revision-diferida.md`.
+
 ## Alcance del corte
 
 El corte incluye:
