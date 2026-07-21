@@ -2,9 +2,9 @@
 
 - **Curso:** rust-cloud
 - **Semestre:** 5
-- **Estado:** draft
+- **Estado:** implemented
 - **Milestone:** 10. GCP en la práctica
-- **Issue:** #37
+- **Issues:** #37, #38
 - **Módulo Rust:** `src/gcp_practice.rs`
 
 ## Concepto
@@ -117,11 +117,27 @@ RFC-0001 §10: proveedor después de fundamentos.
 - El capítulo no empieza por comandos de `gcloud` ni por consola.
 - GCP se modela como una traducción de fundamentos a servicios concretos.
 - La comparación con AWS es secundaria y solo se usa para aclarar decisiones.
-- El modelo Rust mínimo deberá representar una carga GCP educativa sin depender
-  de SDKs.
+- El modelo Rust mínimo representa una carga GCP educativa sin depender de SDKs.
 - Las recomendaciones dependientes de precios, cuotas o límites concretos se
   consideran material vivo y no se publican sin fecha y revisión humana.
 
+## Modelo Rust mínimo
+
+El módulo Rust mínimo vive en `src/gcp_practice.rs` y modela, sin dependencias
+externas:
+
+- capacidades cloud del curso que se quieren aterrizar;
+- servicios GCP candidatos para cada capacidad;
+- proyecto, región, ambiente, dueño y propósito;
+- permisos mínimos, identidad administrada y exposición de red;
+- límites, observabilidad, labels de costo y ciclo de vida;
+- hallazgos cuando un servicio no corresponde a la capacidad, faltan señales o
+  el ejemplo intenta usar credenciales reales.
+
+El módulo no usa SDKs, `gcloud` ni contacta GCP. Su función es pedagógica:
+practicar la traducción de capacidad a servicio antes de tocar una cuenta real.
+
 ## Nota editorial
 
-Este capítulo está en borrador. No está marcado como `reviewed` ni `published`.
+Este capítulo queda en `implemented`. No está marcado como `reviewed` ni
+`published`.

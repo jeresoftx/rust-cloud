@@ -7,6 +7,7 @@
 pub mod aws_practice;
 pub mod compute;
 pub mod finops;
+pub mod gcp_practice;
 pub mod iam;
 pub mod managed_services;
 pub mod networking;
@@ -104,7 +105,7 @@ const PLANNED_CHAPTERS: [Chapter; 10] = [
     Chapter {
         number: 10,
         title: "GCP en la práctica",
-        status: ChapterStatus::Draft,
+        status: ChapterStatus::Implemented,
     },
 ];
 
@@ -125,7 +126,7 @@ mod tests {
         assert_eq!(chapters.len(), 10);
         assert_eq!(chapters[7].title, "Costos y FinOps");
         assert_eq!(chapters[8].status, ChapterStatus::Implemented);
-        assert_eq!(chapters[9].status, ChapterStatus::Draft);
+        assert_eq!(chapters[9].status, ChapterStatus::Implemented);
         assert_eq!(chapters[0].status, ChapterStatus::Implemented);
         assert_eq!(chapters[1].status, ChapterStatus::Implemented);
         assert_eq!(chapters[2].status, ChapterStatus::Implemented);
