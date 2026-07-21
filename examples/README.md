@@ -17,6 +17,8 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   datos comunes de una academia.
 - `networking.rs`: construye una VPC educativa con subred pública, subredes
   privadas, ruta pública explícita y reglas de firewall con propósito.
+- `iam.rs`: compara un plan de acceso de bajo riesgo con un caso de
+  administración amplia que revela hallazgos educativos.
 - `soluciones/compute_nivel_1.rs`: solución del ejercicio básico de recursos y
   límites.
 - `soluciones/compute_nivel_2.rs`: solución del ejercicio intermedio de
