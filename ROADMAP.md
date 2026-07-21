@@ -77,7 +77,7 @@ esperada es:
 
 ## Siguiente paso natural
 
-Preparar la publicación candidata interna del curso `rust-cloud`: ejecutar la
-suite completa, registrar el resultado de verificación y dejar claro qué queda
-pendiente para que Joel decida qué material puede pasar de `implemented` a
-`reviewed`.
+Revisión humana de Joel sobre la publicación candidata interna del curso
+`rust-cloud`: continuidad entre capítulos, exactitud técnica, ortografía,
+ejemplos, ejercicios, costos y criterio editorial para decidir qué material
+puede pasar de `implemented` a `reviewed`.
