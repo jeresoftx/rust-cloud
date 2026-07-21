@@ -41,7 +41,7 @@ complementarios como `rust-devops`, `rust-api-design` y
 | 05 | Identidad y accesos | `src/iam.rs` | implemented |
 | 06 | Servicios manejados | `src/managed_services.rs` | implemented |
 | 07 | Serverless | `src/serverless.rs` | implemented |
-| 08 | Costos y FinOps | `src/finops.rs` | planned |
+| 08 | Costos y FinOps | `src/finops.rs` | draft |
 | 09 | AWS en la práctica | `src/aws_practice.rs` | planned |
 | 10 | GCP en la práctica | `src/gcp_practice.rs` | planned |
 
