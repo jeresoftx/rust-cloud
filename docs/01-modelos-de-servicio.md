@@ -4,8 +4,10 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 01. Modelos de servicio
-- **Issues:** #1, #2
+- **Issues:** #1, #2, #3
 - **Módulo Rust:** `src/service_models.rs`
+- **Diagrama:** `diagrams/01-modelos-de-servicio.mmd`
+- **Ejemplo:** `examples/service_models.rs`
 
 ## Concepto
 
@@ -26,6 +28,22 @@ Para este curso, los modelos canónicos son:
   granular; el equipo entrega funciones, eventos o unidades pequeñas de lógica.
 
 Estos nombres no son marcas ni recetas. Son contratos de responsabilidad.
+
+## Imagen mental
+
+Imagina que un equipo construye una cafetería dentro de un edificio.
+
+- En **IaaS**, el edificio existe, pero el equipo decide cómo instalar cocina,
+  máquinas, flujo de trabajo y operación diaria.
+- En **PaaS**, el edificio ya trae cocina funcional; el equipo diseña el menú,
+  prepara recetas y cuida su producto.
+- En **SaaS**, el equipo renta una cafetería operada por alguien más; consume
+  una capacidad completa y gobierna datos, reglas y uso.
+- En **Serverless**, el equipo entrega recetas pequeñas que se activan por
+  pedidos; la capacidad aparece y desaparece según la demanda.
+
+La metáfora no busca ser perfecta. Sirve para recordar que cada modelo cambia
+la pregunta central: qué queremos controlar y qué estamos dispuestos a delegar.
 
 ## Problema
 
@@ -96,6 +114,76 @@ El módulo `src/service_models.rs` representa, en una primera versión:
 - Pruebas para las reglas pequeñas del reparto de responsabilidad.
 - Código pequeño: el objetivo es enseñar el contrato, no simular un proveedor.
 
+## Comparación educativa
+
+| Modelo | Qué conserva el equipo | Qué delega más claramente | Tradeoff principal |
+|--------|-------------------------|---------------------------|--------------------|
+| IaaS | Sistema operativo, runtime, aplicación, datos y escalado | Instalaciones físicas, red física, cómputo físico y virtualización | Mayor control, mayor carga operativa |
+| PaaS | Código y datos de aplicación | Sistema operativo, runtime y parte de la plataforma | Menos operación, menos control de plataforma |
+| Serverless | Código orientado a eventos y parte de los datos | Runtime, capacidad y escalado | Menos operación, más dependencia del modelo de ejecución |
+| SaaS | Uso, datos y reglas de negocio alrededor del producto | Aplicación, runtime, plataforma e infraestructura | Menor carga técnica, menor control de implementación |
+
+Esta tabla no recomienda un modelo universal. Solo organiza la conversación.
+La decisión real depende de seguridad, presupuesto, madurez del equipo,
+portabilidad, disponibilidad, latencia y ritmo de cambio.
+
+## Cómo leer el módulo Rust
+
+El módulo `service_models` representa cada modelo como un perfil:
+
+```rust
+use rust_cloud::service_models::{ResponsibilityLayer, ServiceModel};
+
+let profile = ServiceModel::Iaas.profile();
+let owner = profile.owner_of(ResponsibilityLayer::OperatingSystem);
+```
+
+La API fuerza una lectura explícita: primero eliges el modelo, luego preguntas
+quién opera una capa. Eso evita enseñar Cloud como un menú de productos y lo
+convierte en un reparto de responsabilidades.
+
+También existe una recomendación pequeña:
+
+```rust
+use rust_cloud::service_models::{DecisionContext, recommend_model};
+
+let context = DecisionContext {
+    wants_low_operational_load: true,
+    event_driven_workload: true,
+    ..DecisionContext::default()
+};
+
+let model = recommend_model(context);
+```
+
+La recomendación devuelve error si no hay supuestos mínimos. Eso es deliberado:
+una decisión cloud sin contexto no es una decisión de ingeniería, es una
+preferencia sin argumento.
+
+## Diagrama
+
+El diagrama del capítulo vive en
+`diagrams/01-modelos-de-servicio.mmd`. Resume la frontera de responsabilidad
+como un continuo de abstracción:
+
+```text
+IaaS -> PaaS -> Serverless -> SaaS
+control alto                         carga operativa baja
+```
+
+## Ejemplo ejecutable
+
+El ejemplo `examples/service_models.rs` imprime una comparación breve y una
+recomendación educativa:
+
+```bash
+cargo run --example service_models
+```
+
+El ejemplo no contacta ningún proveedor, no calcula precios y no promete
+arquitecturas de producción. Solo muestra cómo convertir una conversación de
+Cloud en datos verificables.
+
 ## Decisiones registradas en el modelo Rust
 
 - Las capas del modelo son: instalaciones físicas, red física, cómputo físico,
@@ -107,6 +195,18 @@ El módulo `src/service_models.rs` representa, en una primera versión:
 - Control, carga operativa y portabilidad se representan como puntajes
   educativos (`Low`, `Medium`, `High`), no como métricas reales.
 - Una recomendación sin supuestos mínimos devuelve error explícito.
+
+## Práctica sugerida
+
+Antes de elegir un servicio concreto, escribe cuatro columnas:
+
+1. Responsabilidad que quiero delegar.
+2. Responsabilidad que debo conservar.
+3. Supuesto que justifica la decisión.
+4. Costo o riesgo que acepto al tomarla.
+
+Después compara el resultado contra el módulo Rust. Si no puedes llenar la
+columna de supuestos, todavía no estás listo para escoger un modelo de servicio.
 
 ## Estado editorial
 

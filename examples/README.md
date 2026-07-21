@@ -7,5 +7,7 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
 - avanzado
 - caso real
 
-Todavía no se agregan ejemplos de capítulo porque el plan debe vivir primero en
-GitHub como milestones e issues.
+## Ejemplos actuales
+
+- `service_models.rs`: compara modelos de servicio sin contactar proveedores ni
+  depender de SDKs externos.
