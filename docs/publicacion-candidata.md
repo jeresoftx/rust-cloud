@@ -14,6 +14,9 @@ La bitácora de PRs fusionados en modo autónomo vive en
 
 La guía para revisar el corte completo vive en `docs/guia-revision-corte.md`.
 
+La matriz de compuertas automáticas vive en
+`docs/compuertas-automaticas.md`.
+
 ## Alcance del corte
 
 El corte incluye:
