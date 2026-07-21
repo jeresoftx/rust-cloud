@@ -14,6 +14,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: node scripts/verify-course-links.mjs
       - run: node scripts/verify-manifest-consistency.mjs
+      - run: node scripts/verify-cargo-examples.mjs
       - run: node scripts/verify-editorial-status.mjs
       - run: cargo fmt --check
       - run: cargo clippy --all-targets --all-features -- -D warnings
