@@ -23,6 +23,9 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   delegada, estado durable y recuperación probada.
 - `serverless.rs`: compara un flujo serverless acotado con una función que
   revela riesgos de retry, estado y observabilidad.
+- `finops.rs`: compara un costo de producción atribuido contra invocaciones de
+  desarrollo sin dueño, presupuesto ni unidad económica y un recurso productivo
+  casi sin uso.
 - `soluciones/serverless_nivel_1.rs`: solución del ejercicio básico de handler
   de cola acotado.
 - `soluciones/serverless_nivel_2.rs`: solución del ejercicio intermedio de
