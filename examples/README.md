@@ -28,6 +28,8 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   casi sin uso.
 - `aws_practice.rs`: compara un mapeo AWS gobernable contra una decisión que
   mezcla concepto, red, permisos, credenciales y costo sin suficientes límites.
+- `gcp_practice.rs`: compara un mapeo GCP gobernable contra una decisión que
+  mezcla capacidad, proyecto, identidad, red y costo sin suficientes límites.
 - `soluciones/aws_practice_nivel_1.rs`: solución del ejercicio básico de S3
   gobernable.
 - `soluciones/aws_practice_nivel_2.rs`: solución del ejercicio intermedio de

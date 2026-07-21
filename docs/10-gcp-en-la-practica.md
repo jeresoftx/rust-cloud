@@ -4,8 +4,10 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 10. GCP en la práctica
-- **Issues:** #37, #38
+- **Issues:** #37, #38, #39
 - **Módulo Rust:** `src/gcp_practice.rs`
+- **Diagrama:** `diagrams/10-gcp-en-la-practica.mmd`
+- **Ejemplo:** `examples/gcp_practice.rs`
 
 ## Concepto
 
@@ -136,6 +138,140 @@ externas:
 
 El módulo no usa SDKs, `gcloud` ni contacta GCP. Su función es pedagógica:
 practicar la traducción de capacidad a servicio antes de tocar una cuenta real.
+
+## Lectura del modelo
+
+`GcpWorkload` junta cinco preguntas que deben quedar claras antes de abrir una
+consola o ejecutar `gcloud`:
+
+1. **Qué capacidad existe:** cómputo, almacenamiento, red, identidad, managed
+   service, serverless, observabilidad o FinOps.
+2. **Qué servicio candidato la representa:** Cloud Run, Compute Engine, GKE,
+   Cloud Functions, Cloud Storage, VPC, Service Account, Cloud SQL, Pub/Sub,
+   Cloud Operations, Budgets o BigQuery.
+3. **Qué frontera organiza la responsabilidad:** proyecto, región, ambiente,
+   dueño y propósito.
+4. **Qué conserva el equipo:** roles mínimos, identidad administrada, red,
+   límites, observabilidad, labels y ciclo de vida.
+5. **Qué no debe normalizar el ejemplo:** llaves exportadas, credenciales
+   reales, red pública sin frontera o costos sin labels.
+
+El modelo no decide si GCP es mejor que AWS. Decide si una capacidad del curso
+fue traducida a un servicio GCP con suficiente claridad para enseñarse.
+
+## Cómo leer el módulo Rust
+
+Un mapeo gobernable declara capacidad, servicio, proyecto, región, dueño,
+identidad administrada, límites y señales:
+
+```rust
+use rust_cloud::gcp_practice::{
+    CloudCapability, GcpEnvironment, GcpNetworkExposure, GcpPracticeRequirements,
+    GcpService, GcpWorkload,
+};
+
+let workload = GcpWorkload::new(
+    "academy-api",
+    GcpPracticeRequirements {
+        capability: CloudCapability::Compute,
+        service: GcpService::CloudRun,
+        project: "academy-prod",
+        region: "us-central1",
+        environment: GcpEnvironment::Production,
+        owner: "equipo academy",
+        purpose: "servir rutas de aprendizaje a estudiantes",
+        least_privilege: true,
+        managed_identity: true,
+        network_exposure: GcpNetworkExposure::PublicEntrypoint,
+        has_limit: true,
+        observability: true,
+        cost_labels: true,
+        lifecycle_policy: true,
+        uses_real_credentials: false,
+    },
+)
+.unwrap();
+
+assert!(workload.evaluate().is_low_risk());
+```
+
+Una decisión riesgosa mezcla capacidad, servicio e identidad sin límites:
+
+```rust
+use rust_cloud::gcp_practice::{
+    CloudCapability, GcpEnvironment, GcpFinding, GcpNetworkExposure,
+    GcpPracticeRequirements, GcpService, GcpWorkload,
+};
+
+let workload = GcpWorkload::new(
+    "preview-runner",
+    GcpPracticeRequirements {
+        capability: CloudCapability::Serverless,
+        service: GcpService::ComputeEngine,
+        project: "academy-dev",
+        region: "us-central1",
+        environment: GcpEnvironment::Development,
+        owner: "",
+        purpose: "ejecutar previews",
+        least_privilege: false,
+        managed_identity: false,
+        network_exposure: GcpNetworkExposure::PublicUnbounded,
+        has_limit: false,
+        observability: false,
+        cost_labels: false,
+        lifecycle_policy: false,
+        uses_real_credentials: true,
+    },
+)
+.unwrap();
+
+assert!(workload.evaluate().findings().contains(
+    &GcpFinding::ServiceDoesNotMatchCapability("preview-runner"),
+));
+```
+
+## Diagrama
+
+El diagrama del capítulo vive en `diagrams/10-gcp-en-la-practica.mmd`. Resume
+la lectura principal:
+
+```text
+necesidad -> capacidad -> servicio GCP -> proyecto -> identidad/red -> señales -> decisión practicable
+```
+
+La ruta sana obliga a justificar el servicio con una capacidad del curso y un
+proyecto responsable. La ruta riesgosa aparece cuando el servicio se elige por
+equivalencia superficial, cuando el ejemplo usa credenciales reales o cuando
+faltan límites, observabilidad y costo atribuible.
+
+## Ejemplo ejecutable
+
+El ejemplo `examples/gcp_practice.rs` compara una API en Cloud Run con labels,
+service account y límites contra un runner de previews que mezcla serverless
+con Compute Engine, identidad no administrada, red pública sin frontera y
+señales incompletas.
+
+```bash
+cargo run --example gcp_practice
+```
+
+Salida esperada:
+
+```text
+academy-api: mapeo GCP gobernable
+preview-runner: 10 hallazgos educativos
+```
+
+El ejemplo no usa `gcloud`, SDKs ni credenciales reales. Sirve para practicar
+qué preguntas deben quedar respondidas antes de tocar infraestructura real.
+
+## Ejemplos progresivos
+
+| Nivel | Escenario | Señal principal | Aprendizaje |
+|-------|-----------|-----------------|-------------|
+| Básico | API en Cloud Run | Mapeo capacidad-servicio | Compute no es solo una VM; puede delegar runtime y escalado |
+| Intermedio | Runner de previews mal modelado | Identidad y red inseguras | La práctica en GCP no debe normalizar llaves exportadas |
+| Avanzado | Mapa por proyecto y capacidad | Responsabilidad retenida | Cada servicio debe declarar proyecto, labels y señales |
 
 ## Nota editorial
 

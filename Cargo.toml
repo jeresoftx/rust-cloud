@@ -96,6 +96,10 @@ name = "aws_practice"
 path = "examples/aws_practice.rs"
 
 [[example]]
+name = "gcp_practice"
+path = "examples/gcp_practice.rs"
+
+[[example]]
 name = "aws_practice_nivel_1"
 path = "examples/soluciones/aws_practice_nivel_1.rs"
 
