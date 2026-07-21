@@ -98,7 +98,7 @@
       "number": 7,
       "title": "Serverless",
       "slug": "serverless",
-      "status": "planned",
+      "status": "draft",
       "milestone": "07. Serverless",
       "document": "docs/07-serverless.md",
       "module": "src/serverless.rs",
