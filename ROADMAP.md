@@ -47,7 +47,7 @@ esperada es:
 | 03 | Almacenamiento | implemented |
 | 04 | Redes y VPC | implemented |
 | 05 | Identidad y accesos | implemented |
-| 06 | Servicios manejados | planned |
+| 06 | Servicios manejados | draft |
 | 07 | Serverless | planned |
 | 08 | Costos y FinOps | planned |
 | 09 | AWS en la práctica | planned |
@@ -74,5 +74,6 @@ esperada es:
 
 ## Siguiente paso natural
 
-Iniciar el milestone `06. Servicios manejados` con concepto, problema,
-alternativas e invariantes antes de escribir el modelo Rust mínimo.
+Completar el milestone `06. Servicios manejados` con el flujo completo:
+modelo Rust mínimo, capítulo narrativo, diagrama Mermaid, ejemplos progresivos,
+ejercicios, soluciones y análisis de costos.
