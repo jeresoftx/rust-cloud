@@ -23,6 +23,12 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   delegada, estado durable y recuperación probada.
 - `serverless.rs`: compara un flujo serverless acotado con una función que
   revela riesgos de retry, estado y observabilidad.
+- `soluciones/serverless_nivel_1.rs`: solución del ejercicio básico de handler
+  de cola acotado.
+- `soluciones/serverless_nivel_2.rs`: solución del ejercicio intermedio de
+  función riesgosa.
+- `soluciones/serverless_nivel_3.rs`: solución del ejercicio avanzado de
+  scheduler y workflow.
 - `soluciones/managed_services_nivel_1.rs`: solución del ejercicio básico de
   base de datos manejada con restauración probada.
 - `soluciones/managed_services_nivel_2.rs`: solución del ejercicio intermedio

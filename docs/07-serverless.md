@@ -4,10 +4,12 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 07. Serverless
-- **Issues:** #25, #26, #27
+- **Issues:** #25, #26, #27, #28
 - **Módulo Rust:** `src/serverless.rs`
 - **Diagrama:** `diagrams/07-serverless.mmd`
 - **Ejemplo:** `examples/serverless.rs`
+- **Ejercicios:** `docs/ejercicios/07-serverless.md`
+- **Costos:** `docs/costos/07-serverless.md`
 
 ## Concepto
 
@@ -209,6 +211,15 @@ El ejemplo no contacta proveedores ni ejecuta funciones reales. Su intención es
 mostrar qué decisiones deben quedar visibles antes de elegir un runtime
 serverless.
 
+## Ejercicios y costos
+
+Los ejercicios viven en `docs/ejercicios/07-serverless.md` y tienen soluciones
+compilables en `examples/soluciones/serverless_nivel_*.rs`.
+
+El análisis de costos vive en `docs/costos/07-serverless.md`. No usa precios de
+proveedor ni agrega benchmarks: compara elasticidad, límites, retries,
+observabilidad, dependencia y carga downstream.
+
 ## Práctica sugerida
 
 Antes de diseñar un flujo serverless, escribe:
@@ -225,6 +236,9 @@ Antes de diseñar un flujo serverless, escribe:
 
 Si un flujo reintenta y escribe estado sin idempotencia, todavía no debería
 considerarse listo para producción.
+
+Los ejercicios graduados viven en `docs/ejercicios/07-serverless.md`. El
+análisis de costos del capítulo vive en `docs/costos/07-serverless.md`.
 
 ## Decisiones registradas
 
