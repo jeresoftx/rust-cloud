@@ -32,6 +32,7 @@ Antes de considerar este corte como listo para revisión humana, deben pasar:
 - `cargo test --all-targets`;
 - `cargo test --doc`;
 - `cargo bench --all-targets`;
+- `node scripts/verify-editorial-status.mjs`;
 - `git diff --check`.
 
 ## Benchmarks aplicables
