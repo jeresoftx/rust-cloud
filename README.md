@@ -92,6 +92,7 @@ cargo clippy --all-targets --all-features -- -D warnings
 cargo test --all-targets
 cargo test --doc
 node scripts/verify-course-links.mjs
+node scripts/verify-editorial-status.mjs
 ```
 
 ## Gobernanza
