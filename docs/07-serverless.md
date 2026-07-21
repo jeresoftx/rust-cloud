@@ -2,9 +2,9 @@
 
 - **Curso:** rust-cloud
 - **Semestre:** 5
-- **Estado:** draft
+- **Estado:** implemented
 - **Milestone:** 07. Serverless
-- **Issue:** #25
+- **Issues:** #25, #26
 - **Módulo Rust:** `src/serverless.rs`
 
 ## Concepto
@@ -74,9 +74,10 @@ RFC-0001 §10: proveedor después de fundamentos.
 - Los nombres, precios y límites de proveedor son material vivo y deben
   revisarse cuando se usen ejemplos fechados.
 
-## Requisitos para `src/serverless.rs`
+## Modelo Rust mínimo
 
-El módulo Rust mínimo deberá modelar, sin dependencias externas:
+El módulo Rust mínimo vive en `src/serverless.rs` y modela, sin dependencias
+externas:
 
 - tipos de disparador: HTTP, cola, storage, scheduler y evento interno;
 - unidad serverless con nombre, propósito y límites;
@@ -92,14 +93,22 @@ El módulo no debe intentar simular una plataforma serverless real. Su función 
 pedagógica: hacer visible el contrato de ejecución antes de hablar de AWS Lambda,
 Cloud Functions, Cloud Run, workflows u otros productos.
 
-## Decisiones pendientes
+## Decisiones registradas
 
-- Definir si una carga serverless se modela como función, workflow o workload
-  genérico.
-- Nombrar errores y hallazgos públicos antes de escribir ejemplos.
-- Definir umbrales educativos de timeout y concurrencia.
-- Decidir cómo representar idempotencia sin sobreprometer seguridad real.
+- La unidad serverless se modela como `ServerlessWorkload` para cubrir función,
+  contenedor y workflow sin atarse a un proveedor.
+- Los disparadores viven en `TriggerKind`; el runtime educativo en
+  `RuntimeProfile`.
+- Los límites viven en `timeout_seconds` y `max_concurrency`.
+- Retries e idempotencia se modelan por separado con `RetryPolicy` e
+  `IdempotencyStrategy`.
+- `StateAccess` distingue funciones sin estado de lecturas o escrituras en
+  estado externo.
+- `ServerlessFinding` vuelve visibles retries sin idempotencia, concurrencia sin
+  límite, timeout alto, escritura de estado sin idempotencia y observabilidad
+  incompleta.
 
 ## Estado editorial
 
-Este capítulo queda en `draft`. No está marcado como `reviewed` ni `published`.
+Este capítulo queda en `implemented`. No está marcado como `reviewed` ni
+`published`.
