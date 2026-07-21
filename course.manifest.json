@@ -84,7 +84,7 @@
       "number": 6,
       "title": "Servicios manejados",
       "slug": "servicios-manejados",
-      "status": "draft",
+      "status": "implemented",
       "milestone": "06. Servicios manejados",
       "document": "docs/06-servicios-manejados.md",
       "module": "src/managed_services.rs",

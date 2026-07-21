@@ -6,6 +6,7 @@
 
 pub mod compute;
 pub mod iam;
+pub mod managed_services;
 pub mod networking;
 pub mod service_models;
 pub mod storage;
@@ -80,7 +81,7 @@ const PLANNED_CHAPTERS: [Chapter; 10] = [
     Chapter {
         number: 6,
         title: "Servicios manejados",
-        status: ChapterStatus::Draft,
+        status: ChapterStatus::Implemented,
     },
     Chapter {
         number: 7,
@@ -131,6 +132,6 @@ mod tests {
         assert_eq!(chapters[2].status, ChapterStatus::Implemented);
         assert_eq!(chapters[3].status, ChapterStatus::Implemented);
         assert_eq!(chapters[4].status, ChapterStatus::Implemented);
-        assert_eq!(chapters[5].status, ChapterStatus::Draft);
+        assert_eq!(chapters[5].status, ChapterStatus::Implemented);
     }
 }
