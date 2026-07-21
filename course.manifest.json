@@ -14,7 +14,7 @@
       "number": 1,
       "title": "Modelos de servicio",
       "slug": "modelos-de-servicio",
-      "status": "planned",
+      "status": "draft",
       "milestone": "01. Modelos de servicio",
       "document": "docs/01-modelos-de-servicio.md",
       "module": "src/service_models.rs",
