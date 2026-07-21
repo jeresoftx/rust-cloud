@@ -94,6 +94,8 @@ cargo test --doc
   DevOps y arquitectura.
 - `ROADMAP.md` registra el avance del curso sin convertirlo en una fecha
   límite.
+- El GitHub Project del curso vive en
+  `https://github.com/users/jeresoftx/projects/10`.
 - Antes de tocar código de curso, el plan completo debe existir como milestones
   e issues de GitHub.
 - `LICENSE.md` resume la doble licencia: código bajo `MIT OR Apache-2.0`;
