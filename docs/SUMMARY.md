@@ -14,6 +14,8 @@
   - [Ejercicios: almacenamiento](./ejercicios/03-almacenamiento.md)
   - [Costos: almacenamiento](./costos/03-almacenamiento.md)
 - [Redes y VPC](./04-redes-y-vpc.md)
+  - [Ejercicios: redes y VPC](./ejercicios/04-redes-y-vpc.md)
+  - [Costos: redes y VPC](./costos/04-redes-y-vpc.md)
 - [Identidad y accesos](./05-identidad-y-accesos.md)
 - [Servicios manejados](./06-servicios-manejados.md)
 - [Serverless](./07-serverless.md)
