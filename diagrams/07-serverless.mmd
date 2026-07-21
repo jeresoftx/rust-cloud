@@ -1,0 +1,19 @@
+flowchart TD
+    A["Evento"] --> B["ServerlessWorkload"]
+    B --> C["Timeout"]
+    B --> D["Concurrencia"]
+    B --> E["RetryPolicy"]
+    B --> F["StateAccess"]
+    E --> G["IdempotencyStrategy"]
+    F --> G
+    B --> H["ObservabilityPlan"]
+    C --> I["Evaluación"]
+    D --> I
+    G --> I
+    H --> I
+    I --> J{"Hallazgos"}
+    J -->|"sin hallazgos"| K["Bajo riesgo educativo"]
+    J -->|"retry sin idempotencia"| L["Riesgo serverless"]
+    J -->|"concurrencia sin límite"| L
+    J -->|"timeout alto"| L
+    J -->|"observabilidad incompleta"| L
