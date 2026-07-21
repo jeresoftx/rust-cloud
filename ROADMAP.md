@@ -74,6 +74,6 @@ esperada es:
 
 ## Siguiente paso natural
 
-Completar el milestone `09. AWS en la práctica` con capítulo narrativo
-expandido, diagrama Mermaid, ejemplo ejecutable, ejercicios, soluciones y
-análisis de costos.
+Continuar con el milestone `10. GCP en la práctica`, manteniendo la simetría
+educativa con AWS: proveedor concreto, fundamentos transferibles y cero
+dependencia de credenciales reales en ejemplos del curso.
