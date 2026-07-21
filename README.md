@@ -111,6 +111,8 @@ node scripts/verify-editorial-status.mjs
   verificaciones sin publicarlo automáticamente.
 - `docs/compuertas-automaticas.md` enumera las compuertas obligatorias del
   corte candidato y la frontera que sigue siendo humana.
+- `docs/paquete-revision-humana.md` reúne rutas, preguntas y evidencia para
+  revisar cada capítulo sin aprobarlo automáticamente.
 - `docs/00-introduccion.md` define la frontera conceptual de Cloud frente a
   DevOps y arquitectura.
 - `ROADMAP.md` registra el avance del curso sin convertirlo en una fecha
