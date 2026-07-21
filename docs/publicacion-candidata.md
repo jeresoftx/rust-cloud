@@ -33,6 +33,7 @@ Antes de considerar este corte como listo para revisión humana, deben pasar:
 
 - `node scripts/verify-course-links.mjs`;
 - `node scripts/verify-manifest-consistency.mjs`;
+- `node scripts/verify-cargo-examples.mjs`;
 - `cargo fmt --check`;
 - `cargo clippy --all-targets --all-features -- -D warnings`;
 - `cargo test --all-targets`;
