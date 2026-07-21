@@ -8,9 +8,10 @@ orienta el avance, pero no convierte el curso en una carrera por terminar.
 
 ## Estado actual
 
-El repositorio acaba de entrar en desarrollo. La estructura inicial declara la
-frontera del curso, el mapa de capítulos, el contrato para `academy-web`, las
-licencias, el crate Rust mínimo y el flujo de trabajo con GitHub.
+El repositorio ya tiene un primer corte completo en estado `implemented`. Los
+diez capítulos canónicos declaran concepto, problema, alternativas,
+justificación, invariantes, modelo Rust, ejemplos, pruebas, ejercicios,
+diagramas y lectura educativa de costos.
 
 El plan de trabajo vive en GitHub como milestones, issues, labels y un GitHub
 Project asociado al repositorio. Cada paso accionable queda asignado a
@@ -24,7 +25,9 @@ agrupada por `Milestone`. Esta agrupación es requisito de aceptación del
 andamiaje de GitHub, no una recomendación visual.
 
 Ningún capítulo está marcado como `reviewed` ni `published`, porque la revisión
-humana de Joel sigue siendo obligatoria según RFC-0001 §20.
+humana de Joel sigue siendo obligatoria según RFC-0001 §20. El estado
+`implemented` comunica que el material está listo para revisión diferida, no
+que ya fue aprobado.
 
 ## Progresión del Semestre 5
 
@@ -38,7 +41,7 @@ esperada es:
 5. **Aterrizaje por proveedor:** AWS y GCP en la práctica, sin convertir el
    curso en catálogo de consola.
 
-## Capítulos planeados
+## Capítulos del corte implementado
 
 | # | Capítulo | Estado |
 |---|----------|--------|
@@ -74,7 +77,7 @@ esperada es:
 
 ## Siguiente paso natural
 
-Preparar una revisión humana del primer corte completo del curso `rust-cloud`:
-verificar continuidad entre capítulos, exactitud técnica, ortografía, ejemplos,
-ejercicios y costos antes de decidir qué material puede pasar de `implemented`
-a `reviewed`.
+Preparar la publicación candidata interna del curso `rust-cloud`: ejecutar la
+suite completa, registrar el resultado de verificación y dejar claro qué queda
+pendiente para que Joel decida qué material puede pasar de `implemented` a
+`reviewed`.
