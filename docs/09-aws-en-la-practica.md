@@ -4,10 +4,12 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 09. AWS en la práctica
-- **Issues:** #33, #34, #35
+- **Issues:** #33, #34, #35, #36
 - **Módulo Rust:** `src/aws_practice.rs`
 - **Diagrama:** `diagrams/09-aws-en-la-practica.mmd`
 - **Ejemplo:** `examples/aws_practice.rs`
+- **Ejercicios:** `docs/ejercicios/09-aws-en-la-practica.md`
+- **Costos:** `docs/costos/09-aws-en-la-practica.md`
 
 ## Concepto
 
@@ -263,6 +265,15 @@ El capítulo usa tres niveles de lectura:
 | Básico | Assets privados en S3 | Mapeo concepto-servicio | Storage no es solo un bucket; requiere dueño, permisos y ciclo de vida |
 | Intermedio | Runner de previews mal modelado | Credenciales y red inseguras | La práctica en AWS no debe normalizar atajos peligrosos |
 | Avanzado | Mapa de servicios por capacidad | Responsabilidad retenida | Cada servicio debe explicar qué delega y qué conserva el equipo |
+
+## Ejercicios y costos
+
+Los ejercicios viven en `docs/ejercicios/09-aws-en-la-practica.md` y tienen
+soluciones compilables en `examples/soluciones/aws_practice_nivel_*.rs`.
+
+El análisis de costos vive en `docs/costos/09-aws-en-la-practica.md`. No usa
+precios de proveedor: compara exposición pública, credenciales, límites, tags,
+ciclo de vida, observabilidad y responsabilidad retenida.
 
 ## Nota editorial
 

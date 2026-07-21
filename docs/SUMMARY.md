@@ -29,4 +29,6 @@
   - [Ejercicios: costos y FinOps](./ejercicios/08-costos-y-finops.md)
   - [Costos: costos y FinOps](./costos/08-costos-y-finops.md)
 - [AWS en la práctica](./09-aws-en-la-practica.md)
+  - [Ejercicios: AWS en la práctica](./ejercicios/09-aws-en-la-practica.md)
+  - [Costos: AWS en la práctica](./costos/09-aws-en-la-practica.md)
 - [GCP en la práctica](./10-gcp-en-la-practica.md)

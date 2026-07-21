@@ -28,6 +28,12 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   casi sin uso.
 - `aws_practice.rs`: compara un mapeo AWS gobernable contra una decisión que
   mezcla concepto, red, permisos, credenciales y costo sin suficientes límites.
+- `soluciones/aws_practice_nivel_1.rs`: solución del ejercicio básico de S3
+  gobernable.
+- `soluciones/aws_practice_nivel_2.rs`: solución del ejercicio intermedio de
+  runner de previews riesgoso.
+- `soluciones/aws_practice_nivel_3.rs`: solución del ejercicio avanzado de
+  matriz AWS por capacidad.
 - `soluciones/finops_nivel_1.rs`: solución del ejercicio básico de costo
   gobernable.
 - `soluciones/finops_nivel_2.rs`: solución del ejercicio intermedio de
