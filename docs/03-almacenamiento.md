@@ -2,9 +2,9 @@
 
 - **Curso:** rust-cloud
 - **Semestre:** 5
-- **Estado:** draft
+- **Estado:** implemented
 - **Milestone:** 03. Almacenamiento
-- **Issue:** #9
+- **Issues:** #9, #10
 - **Módulo Rust:** `src/storage.rs`
 
 ## Concepto
@@ -91,7 +91,7 @@ serán las responsabilidades del dato.
 
 ## Requisitos funcionales del modelo Rust
 
-El módulo `src/storage.rs` debe representar, en una primera versión:
+El módulo `src/storage.rs` representa, en una primera versión:
 
 - formas de almacenamiento;
 - patrones de acceso;
@@ -111,13 +111,20 @@ El módulo `src/storage.rs` debe representar, en una primera versión:
 - Código pequeño: el objetivo es razonar sobre promesas de datos, no simular un
   sistema de almacenamiento real.
 
-## Decisiones pendientes para el siguiente issue
+## Decisiones registradas en el modelo Rust
 
-- Nombrar las formas exactas de almacenamiento del modelo Rust.
-- Decidir cómo representar consistencia: enum simple o perfil educativo.
-- Definir si ciclo de vida y costo serán estructuras separadas o campos del
-  requerimiento de dato.
+- Las formas del modelo Rust son: objeto, bloque, archivo, efímero y archivo
+  histórico.
+- La consistencia se representa como enum educativo (`Strong`, `Eventual`,
+  `Bounded`) para explicar fronteras sin prometer semánticas de proveedor.
+- Ciclo de vida, frecuencia de lectura y costo de recuperación se separan para
+  que el modelo pueda distinguir datos activos, retenidos, temporales e
+  históricos.
+- Una recomendación sin tamaño o sin declaración de fuente de verdad devuelve
+  error explícito.
+- Un dato no puede ser fuente de verdad y temporal al mismo tiempo.
 
 ## Estado editorial
 
-Este capítulo está en `draft`. No está marcado como `reviewed` ni `published`.
+Este capítulo está en `implemented`. No está marcado como `reviewed` ni
+`published`.

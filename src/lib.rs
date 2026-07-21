@@ -6,6 +6,7 @@
 
 pub mod compute;
 pub mod service_models;
+pub mod storage;
 
 /// Nombre público del curso dentro de Jeresoft Academy.
 pub const COURSE_NAME: &str = "Cloud";
@@ -62,7 +63,7 @@ const PLANNED_CHAPTERS: [Chapter; 10] = [
     Chapter {
         number: 3,
         title: "Almacenamiento",
-        status: ChapterStatus::Draft,
+        status: ChapterStatus::Implemented,
     },
     Chapter {
         number: 4,
@@ -125,6 +126,6 @@ mod tests {
         );
         assert_eq!(chapters[0].status, ChapterStatus::Implemented);
         assert_eq!(chapters[1].status, ChapterStatus::Implemented);
-        assert_eq!(chapters[2].status, ChapterStatus::Draft);
+        assert_eq!(chapters[2].status, ChapterStatus::Implemented);
     }
 }
