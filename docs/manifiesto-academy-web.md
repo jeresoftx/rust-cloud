@@ -18,7 +18,12 @@ El archivo `course.manifest.json` contiene:
 - repositorio;
 - capítulos;
 - estado editorial;
-- rutas esperadas de documento, módulo, ejemplo, tests, benchmark y diagrama.
+- rutas esperadas de documento, ejercicios, costos, módulo, ejemplo, tests,
+  benchmark y diagrama.
+
+La navegación humana vive en `docs/SUMMARY.md`. La verificación editorial de
+rutas vive en `docs/navegacion-y-enlaces.md`. `academy-web` debe tratar esas
+rutas como referencias internas del curso, no como garantía de publicación.
 
 ## Regla de publicación
 
