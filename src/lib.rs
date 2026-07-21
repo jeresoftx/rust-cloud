@@ -98,7 +98,7 @@ const PLANNED_CHAPTERS: [Chapter; 10] = [
     Chapter {
         number: 9,
         title: "AWS en la práctica",
-        status: ChapterStatus::Planned,
+        status: ChapterStatus::Draft,
     },
     Chapter {
         number: 10,
@@ -123,12 +123,8 @@ mod tests {
 
         assert_eq!(chapters.len(), 10);
         assert_eq!(chapters[7].title, "Costos y FinOps");
-        assert!(
-            chapters
-                .iter()
-                .skip(8)
-                .all(|chapter| chapter.status == ChapterStatus::Planned)
-        );
+        assert_eq!(chapters[8].status, ChapterStatus::Draft);
+        assert_eq!(chapters[9].status, ChapterStatus::Planned);
         assert_eq!(chapters[0].status, ChapterStatus::Implemented);
         assert_eq!(chapters[1].status, ChapterStatus::Implemented);
         assert_eq!(chapters[2].status, ChapterStatus::Implemented);

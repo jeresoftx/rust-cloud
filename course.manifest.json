@@ -126,7 +126,7 @@
       "number": 9,
       "title": "AWS en la práctica",
       "slug": "aws-en-la-practica",
-      "status": "planned",
+      "status": "draft",
       "milestone": "09. AWS en la práctica",
       "document": "docs/09-aws-en-la-practica.md",
       "module": "src/aws_practice.rs",
