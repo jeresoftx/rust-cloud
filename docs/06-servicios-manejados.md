@@ -2,9 +2,9 @@
 
 - **Curso:** rust-cloud
 - **Semestre:** 5
-- **Estado:** draft
+- **Estado:** implemented
 - **Milestone:** 06. Servicios manejados
-- **Issue:** #21
+- **Issues:** #21, #22
 - **Módulo Rust:** `src/managed_services.rs`
 
 ## Concepto
@@ -78,9 +78,10 @@ RFC-0001 §10: proveedor después de fundamentos.
 - Los nombres, precios y límites de proveedor son material vivo y deben
   revisarse cuando se usen ejemplos fechados.
 
-## Requisitos para `src/managed_services.rs`
+## Modelo Rust mínimo
 
-El módulo Rust mínimo deberá modelar, sin dependencias externas:
+El módulo Rust mínimo vive en `src/managed_services.rs` y modela, sin
+dependencias externas:
 
 - tipos de capacidad manejada: base de datos, cola, caché, secretos,
   observabilidad y búsqueda;
@@ -96,13 +97,21 @@ El módulo no debe intentar reemplazar catálogos de proveedor. Su función es
 pedagógica: hacer visible qué se delega, qué se conserva y qué costo operativo
 queda.
 
-## Decisiones pendientes
+## Decisiones registradas
 
-- Definir si la capacidad manejada se modela como enum cerrado o como perfil.
-- Definir la granularidad inicial de responsabilidades delegadas y retenidas.
-- Nombrar errores y hallazgos públicos antes de escribir ejemplos.
-- Decidir cómo representar criticidad sin convertirla en una fórmula falsa.
+- La capacidad manejada se modela como enum cerrado (`ManagedCapability`) para
+  enseñar criterio antes de productos concretos.
+- Las responsabilidades delegadas viven en `DelegatedResponsibility`; las
+  responsabilidades retenidas viven en `RetainedResponsibility`.
+- Los requerimientos mínimos se agrupan en `ManagedServiceRequirements`:
+  capacidad, estado durable, criticidad, recuperación, dueño y propósito.
+- Un `ManagedServiceProfile` produce `ManagedServiceEvaluation` con hallazgos
+  educativos (`ManagedServiceFinding`).
+- La criticidad no produce una fórmula automática: solo vuelve visible si falta
+  restauración probada o dueño operativo.
+- Los errores públicos viven en `ManagedServiceDecisionError`.
 
 ## Estado editorial
 
-Este capítulo queda en `draft`. No está marcado como `reviewed` ni `published`.
+Este capítulo queda en `implemented`. No está marcado como `reviewed` ni
+`published`.
