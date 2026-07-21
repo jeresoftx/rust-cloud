@@ -8,6 +8,7 @@
 - [Publicación candidata interna](./publicacion-candidata.md)
 - [Compuertas automáticas](./compuertas-automaticas.md)
 - [Paquete de revisión humana](./paquete-revision-humana.md)
+- [Higiene de ramas y PRs autónomos](./higiene-ramas-prs.md)
 - [Bitácora de revisión diferida](./bitacora-revision-diferida.md)
 - [Guía de revisión por corte](./guia-revision-corte.md)
 - [Modelos de servicio](./01-modelos-de-servicio.md)
