@@ -42,7 +42,7 @@ complementarios como `rust-devops`, `rust-api-design` y
 | 06 | Servicios manejados | `src/managed_services.rs` | implemented |
 | 07 | Serverless | `src/serverless.rs` | implemented |
 | 08 | Costos y FinOps | `src/finops.rs` | implemented |
-| 09 | AWS en la práctica | `src/aws_practice.rs` | draft |
+| 09 | AWS en la práctica | `src/aws_practice.rs` | implemented |
 | 10 | GCP en la práctica | `src/gcp_practice.rs` | planned |
 
 Estados posibles: `planned`, `draft`, `implemented`, `tested`,

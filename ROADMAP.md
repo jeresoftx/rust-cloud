@@ -50,7 +50,7 @@ esperada es:
 | 06 | Servicios manejados | implemented |
 | 07 | Serverless | implemented |
 | 08 | Costos y FinOps | implemented |
-| 09 | AWS en la práctica | draft |
+| 09 | AWS en la práctica | implemented |
 | 10 | GCP en la práctica | planned |
 
 ## Alineación RFC-0001
@@ -74,6 +74,6 @@ esperada es:
 
 ## Siguiente paso natural
 
-Completar el milestone `09. AWS en la práctica` con el flujo restante: modelo
-Rust mínimo, tests, capítulo narrativo expandido, diagrama Mermaid, ejemplo
-ejecutable, ejercicios, soluciones y análisis de costos.
+Completar el milestone `09. AWS en la práctica` con capítulo narrativo
+expandido, diagrama Mermaid, ejemplo ejecutable, ejercicios, soluciones y
+análisis de costos.

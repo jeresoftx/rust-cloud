@@ -4,6 +4,7 @@
 //! gobernanza, el plan y el contrato educativo. Los capítulos posteriores
 //! agregarán módulos por concepto de cloud conforme a RFC-0001 §14.
 
+pub mod aws_practice;
 pub mod compute;
 pub mod finops;
 pub mod iam;
@@ -98,7 +99,7 @@ const PLANNED_CHAPTERS: [Chapter; 10] = [
     Chapter {
         number: 9,
         title: "AWS en la práctica",
-        status: ChapterStatus::Draft,
+        status: ChapterStatus::Implemented,
     },
     Chapter {
         number: 10,
@@ -123,7 +124,7 @@ mod tests {
 
         assert_eq!(chapters.len(), 10);
         assert_eq!(chapters[7].title, "Costos y FinOps");
-        assert_eq!(chapters[8].status, ChapterStatus::Draft);
+        assert_eq!(chapters[8].status, ChapterStatus::Implemented);
         assert_eq!(chapters[9].status, ChapterStatus::Planned);
         assert_eq!(chapters[0].status, ChapterStatus::Implemented);
         assert_eq!(chapters[1].status, ChapterStatus::Implemented);

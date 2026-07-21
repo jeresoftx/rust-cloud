@@ -2,9 +2,9 @@
 
 - **Curso:** rust-cloud
 - **Semestre:** 5
-- **Estado:** draft
+- **Estado:** implemented
 - **Milestone:** 09. AWS en la práctica
-- **Issue:** #33
+- **Issues:** #33, #34
 - **Módulo Rust:** `src/aws_practice.rs`
 
 ## Concepto
@@ -115,6 +115,23 @@ RFC-0001 §10: proveedor después de fundamentos.
 - Las recomendaciones dependientes de precios, cuotas o límites concretos se
   consideran material vivo y no se publican sin fecha y revisión humana.
 
+## Modelo Rust mínimo
+
+El módulo Rust mínimo vive en `src/aws_practice.rs` y modela, sin dependencias
+externas:
+
+- conceptos cloud del curso que se quieren aterrizar;
+- servicios AWS candidatos para cada concepto;
+- región, ambiente, dueño y propósito;
+- permisos mínimos, credenciales temporales y exposición de red;
+- límites, observabilidad, tags de costo y ciclo de vida;
+- hallazgos cuando un servicio no corresponde al concepto, faltan señales o el
+  ejemplo intenta usar credenciales reales.
+
+El módulo no usa SDKs ni contacta AWS. Su función es pedagógica: practicar la
+traducción de concepto a servicio antes de tocar una cuenta real.
+
 ## Nota editorial
 
-Este capítulo está en borrador. No está marcado como `reviewed` ni `published`.
+Este capítulo queda en `implemented`. No está marcado como `reviewed` ni
+`published`.
