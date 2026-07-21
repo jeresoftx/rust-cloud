@@ -1,0 +1,26 @@
+flowchart LR
+    classDef workload fill:#101820,stroke:#86b7ff,color:#f7fbff
+    classDef decision fill:#2f250b,stroke:#f3c542,color:#fff7d6
+    classDef mode fill:#111111,stroke:#d6a832,color:#f7f0dd
+    classDef warning fill:#2a1414,stroke:#ef9a9a,color:#fff0f0
+
+    Workload["Carga"]:::workload --> Resources["CPU + memoria"]:::decision
+    Workload --> Lifecycle["Ciclo de vida"]:::decision
+    Workload --> Isolation["Aislamiento"]:::decision
+    Workload --> Scaling["Señal de escalado"]:::decision
+
+    Resources --> Choose["Elegir modo de cómputo"]:::decision
+    Lifecycle --> Choose
+    Isolation --> Choose
+    Scaling --> Choose
+
+    Choose --> VM["Máquina virtual"]:::mode
+    Choose --> Container["Contenedor"]:::mode
+    Choose --> Managed["Contenedor administrado"]:::mode
+    Choose --> Function["Función"]:::mode
+    Choose --> Batch["Trabajo batch"]:::mode
+
+    VM --> HighControl["Más control, más operación"]:::warning
+    Function --> LowOps["Menos operación, más límites de runtime"]:::warning
+    Managed --> PlatformTradeoff["Plataforma ayuda, cuotas importan"]:::warning
+    Batch --> TimeWindow["Ventanas, colas y reintentos"]:::warning

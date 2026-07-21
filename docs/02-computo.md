@@ -4,8 +4,10 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 02. Cómputo
-- **Issues:** #5, #6
+- **Issues:** #5, #6, #7
 - **Módulo Rust:** `src/compute.rs`
+- **Diagrama:** `diagrams/02-computo.mmd`
+- **Ejemplo:** `examples/compute.rs`
 
 ## Concepto
 
@@ -32,6 +34,22 @@ Para este curso, los modos canónicos de cómputo son:
 
 Estos modos no compiten por moda. Cada uno expresa un contrato distinto entre
 control, aislamiento y carga operativa.
+
+## Imagen mental
+
+Piensa en un taller donde llegan distintos tipos de trabajo.
+
+- Algunas piezas necesitan una mesa completa, herramientas propias y control
+  fino: se parecen a una **máquina virtual**.
+- Otras llegan empacadas en una caja reproducible: se parecen a un
+  **contenedor**.
+- Algunas cajas pueden entregarse a una línea de producción que escala con la
+  demanda: se parecen a un **contenedor administrado**.
+- Otras son instrucciones pequeñas que se ejecutan cuando ocurre algo: se
+  parecen a una **función**.
+- Otras se acumulan y se procesan por turnos: se parecen a un **trabajo batch**.
+
+La decisión no empieza por la herramienta. Empieza por la forma del trabajo.
 
 ## Problema
 
@@ -104,6 +122,74 @@ El módulo `src/compute.rs` representa, en una primera versión:
 - Pruebas para límites, clasificación de carga y errores de decisión.
 - Código pequeño: el objetivo es razonar cómputo, no simular un scheduler real.
 
+## Comparación educativa
+
+| Modo | Cuándo encaja | Qué controla el equipo | Riesgo si se elige por moda |
+|------|---------------|------------------------|------------------------------|
+| Máquina virtual | Cargas que requieren sistema operativo, runtime o configuración fina | Sistema operativo, runtime, parches, escalado y operación | Convertir Cloud en servidores remotos administrados a mano |
+| Contenedor | Cargas empacadas y reproducibles que necesitan portabilidad | Imagen, proceso, runtime de aplicación y parte del despliegue | Creer que empaquetar resuelve operación, red y capacidad |
+| Contenedor administrado | Servicios HTTP o workers con imagen de contenedor y deseo de menor operación | Imagen, variables, límites, health checks y reglas de despliegue | Delegar sin entender cuotas, arranque, observabilidad y costo |
+| Función | Cargas cortas, orientadas a eventos y con baja operación base | Código, handler, permisos y contrato de evento | Fragmentar lógica o depender demasiado del modelo de eventos |
+| Trabajo batch | Procesamiento por lotes, horario, cola o ventana de ejecución | Entradas, reintentos, concurrencia y límites de recursos | Tratar un trabajo temporal como servicio permanente |
+
+La tabla no reemplaza una evaluación real. Solo ordena el razonamiento para que
+la conversación empiece por restricciones de carga.
+
+## Cómo leer el módulo Rust
+
+El módulo `compute` empieza por una carga:
+
+```rust
+use rust_cloud::compute::{ResourceRequest, WorkloadRequirements};
+
+let workload = WorkloadRequirements {
+    resources: Some(ResourceRequest::new(1, 512).unwrap()),
+    event_driven: true,
+    wants_low_operational_load: true,
+    ..WorkloadRequirements::default()
+};
+```
+
+Después se pide una recomendación educativa:
+
+```rust
+use rust_cloud::compute::{ComputeMode, recommend_compute};
+
+# let workload = rust_cloud::compute::WorkloadRequirements {
+#     resources: Some(rust_cloud::compute::ResourceRequest::new(1, 512).unwrap()),
+#     event_driven: true,
+#     wants_low_operational_load: true,
+#     ..rust_cloud::compute::WorkloadRequirements::default()
+# };
+let mode = recommend_compute(workload);
+assert_eq!(mode, Ok(ComputeMode::Function));
+```
+
+La API obliga a declarar recursos mínimos. Si no hay CPU y memoria, el modelo
+no recomienda. Esto refleja una regla sencilla: no se elige plataforma sin
+nombrar lo que la carga necesita para existir.
+
+## Diagrama
+
+El diagrama del capítulo vive en `diagrams/02-computo.mmd`. Resume la lectura
+principal:
+
+```text
+carga -> restricciones -> modo de cómputo -> tradeoff operativo
+```
+
+## Ejemplo ejecutable
+
+El ejemplo `examples/compute.rs` compara perfiles y recomienda modos para tres
+cargas pequeñas:
+
+```bash
+cargo run --example compute
+```
+
+El ejemplo no contacta proveedores ni calcula precios. Su intención es mostrar
+que cada forma de cómputo nace de supuestos explícitos.
+
 ## Decisiones registradas en el modelo Rust
 
 - Las formas de cómputo del modelo son: máquina virtual, contenedor,
@@ -115,6 +201,19 @@ El módulo `src/compute.rs` representa, en una primera versión:
 - Una recomendación sin recursos mínimos devuelve error explícito.
 - Una carga que exige control de sistema operativo y baja carga operativa a la
   vez devuelve conflicto: el modelo no decide el tradeoff por el estudiante.
+
+## Práctica sugerida
+
+Antes de escoger una forma de cómputo, escribe:
+
+1. Recursos mínimos: CPU, memoria, duración y concurrencia esperada.
+2. Ciclo de vida: servicio permanente, petición/respuesta, evento o batch.
+3. Frontera de aislamiento: máquina, contenedor, proceso o runtime manejado.
+4. Señal de escalado: manual, CPU/memoria, cola, evento u horario.
+5. Tradeoff aceptado: control, operación, portabilidad, costo o límites.
+
+Si la respuesta no menciona recursos y ciclo de vida, todavía no es una decisión
+de cómputo; es una preferencia por una herramienta.
 
 ## Estado editorial
 
