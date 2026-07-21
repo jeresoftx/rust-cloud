@@ -31,14 +31,16 @@ Antes de considerar este corte como listo para revisión humana, deben pasar:
 - `cargo clippy --all-targets --all-features -- -D warnings`;
 - `cargo test --all-targets`;
 - `cargo test --doc`;
+- `cargo bench --all-targets`;
 - `git diff --check`.
 
 ## Benchmarks aplicables
 
-No se ejecuta `cargo bench` en este corte porque el repositorio no contiene
-benchmarks ejecutables. `benches/README.md` registra por capítulo por qué medir
-la lógica local del modelo Rust daría señales falsas sobre costos reales de
-cloud.
+Se ejecuta `cargo bench --all-targets` en este corte y pasa correctamente. El
+resultado no contiene benchmarks medidos porque el repositorio todavía no tiene
+targets de benchmark ejecutables. `benches/README.md` registra por capítulo por
+qué medir la lógica local del modelo Rust daría señales falsas sobre costos
+reales de cloud.
 
 Cuando exista una simulación educativa fechada de tráfico, almacenamiento,
 retención, concurrencia o billing export, se deberá crear un issue específico,

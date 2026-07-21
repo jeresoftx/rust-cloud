@@ -40,5 +40,7 @@ capacidad o selección de plataforma.
 ## Verificación de este corte
 
 Para la publicación candidata interna, `cargo test --all-targets` cubre los
-ejemplos registrados en `Cargo.toml`. No existen archivos ejecutables de
-benchmark en `benches/`; por eso no se ejecuta `cargo bench` en este corte.
+ejemplos registrados en `Cargo.toml`. También se ejecuta
+`cargo bench --all-targets`: compila el perfil bench y pasa correctamente, pero
+no reporta métricas porque aún no existen targets de benchmark ejecutables en
+`benches/`.
