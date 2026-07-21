@@ -74,6 +74,5 @@ esperada es:
 
 ## Siguiente paso natural
 
-Completar el milestone `05. Identidad y accesos` con el flujo restante:
-capítulo narrativo, diagrama Mermaid, ejemplos progresivos, ejercicios,
-soluciones y análisis de costos.
+Iniciar el milestone `06. Servicios manejados` con concepto, problema,
+alternativas e invariantes antes de escribir el modelo Rust mínimo.

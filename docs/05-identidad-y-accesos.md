@@ -4,10 +4,12 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 05. Identidad y accesos
-- **Issues:** #17, #18, #19
+- **Issues:** #17, #18, #19, #20
 - **Módulo Rust:** `src/iam.rs`
 - **Diagrama:** `diagrams/05-identidad-y-accesos.mmd`
 - **Ejemplo:** `examples/iam.rs`
+- **Ejercicios:** `docs/ejercicios/05-identidad-y-accesos.md`
+- **Costos:** `docs/costos/05-identidad-y-accesos.md`
 
 ## Concepto
 
@@ -254,6 +256,10 @@ Antes de conceder un permiso cloud, escribe:
 Si un permiso no puede explicar su propósito en una frase, todavía no debería
 existir. Si necesita comodín, administración amplia o credenciales permanentes,
 debe quedar escrito como riesgo explícito y no como normalidad.
+
+Los ejercicios graduados viven en
+`docs/ejercicios/05-identidad-y-accesos.md`. El análisis de costos del capítulo
+vive en `docs/costos/05-identidad-y-accesos.md`.
 
 ## Decisiones registradas
 
