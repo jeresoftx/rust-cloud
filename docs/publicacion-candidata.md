@@ -17,6 +17,9 @@ La guía para revisar el corte completo vive en `docs/guia-revision-corte.md`.
 La matriz de compuertas automáticas vive en
 `docs/compuertas-automaticas.md`.
 
+El paquete operativo para revisar capítulo por capítulo vive en
+`docs/paquete-revision-humana.md`.
+
 ## Alcance del corte
 
 El corte incluye:
