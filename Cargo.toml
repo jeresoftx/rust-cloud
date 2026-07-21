@@ -46,3 +46,7 @@ path = "examples/soluciones/storage_nivel_2.rs"
 [[example]]
 name = "storage_nivel_3"
 path = "examples/soluciones/storage_nivel_3.rs"
+
+[[example]]
+name = "networking"
+path = "examples/networking.rs"

@@ -4,8 +4,10 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 04. Redes y VPC
-- **Issue:** #14
+- **Issues:** #14, #15
 - **Módulo Rust:** `src/networking.rs`
+- **Diagrama:** `diagrams/04-redes-y-vpc.mmd`
+- **Ejemplo:** `examples/networking.rs`
 
 ## Concepto
 
@@ -19,6 +21,25 @@ agrupa recursos, organiza subredes, rutas, reglas de tráfico, puntos de entrada
 conectividad privada y resolución de nombres. El objetivo no es memorizar la
 consola de un proveedor, sino razonar sobre alcance, aislamiento,
 disponibilidad y operación.
+
+## Imagen mental
+
+Piensa en un edificio técnico.
+
+- La **VPC** es el perímetro del edificio: no garantiza seguridad por sí sola,
+  pero define dónde empieza y termina el espacio controlado.
+- Las **subredes** son pisos o áreas: recepción, oficinas internas, cuarto de
+  servidores y zonas operativas.
+- Las **rutas** son pasillos y salidas: hacen posible moverse de un lugar a
+  otro, pero no dicen quién está autorizado.
+- Las **reglas de tráfico** son puertas con criterio: origen, destino,
+  protocolo, puerto y propósito.
+- La **exposición pública** es una puerta hacia la calle. Debe existir por una
+  razón clara, no por accidente.
+
+La metáfora sirve para separar tres preguntas que suelen mezclarse:
+direccionamiento, camino posible y autorización. Tener una dirección no implica
+tener permiso; tener una ruta no implica que cualquier tráfico deba pasar.
 
 ## Problema
 
@@ -83,11 +104,151 @@ externas:
 - rutas con destino, siguiente salto y propósito;
 - reglas de tráfico con origen, destino, protocolo y puerto;
 - exposición pública o privada como decisión explícita;
-- validaciones legibles cuando falte origen, destino, intención o ruta.
+- validaciones legibles cuando falte nombre, destino, zona o intención.
 
-El módulo no debe intentar simular paquetes reales ni reemplazar herramientas de
-red. Su función es pedagógica: hacer ejecutables los conceptos del capítulo y
+El módulo no intenta simular paquetes reales ni reemplazar herramientas de red.
+Su función es pedagógica: hacer ejecutables los conceptos del capítulo y
 permitir pruebas unitarias claras.
+
+## Comparación educativa
+
+| Elemento | Qué decide | Qué no decide por sí solo | Riesgo común |
+|----------|------------|----------------------------|--------------|
+| VPC | Frontera de alcance y confianza | Autorización fina | Creer que todo dentro de la VPC es seguro |
+| Subred | Ubicación lógica, rol y dominio de fallo | Permiso de tráfico | Tratar `public` o `private` como etiqueta decorativa |
+| Ruta | Camino posible hacia un destino | Quién puede usarlo | Abrir salida o ingreso sin propósito |
+| Firewall | Tráfico permitido | Topología completa | Autorizar reglas amplias por comodidad |
+| Gateway | Punto de entrada o salida | Diseño de confianza | Convertirlo en acceso público indiscriminado |
+| Conectividad privada | Camino sin Internet público | Simplicidad operativa | Olvidar DNS, rutas, costos y observabilidad |
+
+## Cómo leer el módulo Rust
+
+El módulo `networking` empieza declarando una red virtual:
+
+```rust
+use rust_cloud::networking::VirtualNetwork;
+
+let mut network = VirtualNetwork::new("academy-prod", "10.20.0.0/16").unwrap();
+```
+
+Después se agregan subredes con rol y zona lógica:
+
+```rust
+use rust_cloud::networking::NetworkRole;
+
+# let mut network = rust_cloud::networking::VirtualNetwork::new(
+#     "academy-prod",
+#     "10.20.0.0/16",
+# ).unwrap();
+network
+    .add_subnet("edge-a", "10.20.1.0/24", "zone-a", NetworkRole::PublicEdge)
+    .unwrap();
+network
+    .add_subnet(
+        "app-a",
+        "10.20.10.0/24",
+        "zone-a",
+        NetworkRole::PrivateWorkload,
+    )
+    .unwrap();
+```
+
+Una ruta pública se declara con destino, siguiente salto y propósito:
+
+```rust
+use rust_cloud::networking::{Exposure, Route, RouteTarget};
+
+# let mut network = rust_cloud::networking::VirtualNetwork::new(
+#     "academy-prod",
+#     "10.20.0.0/16",
+# ).unwrap();
+# network
+#     .add_subnet("edge-a", "10.20.1.0/24", "zone-a", rust_cloud::networking::NetworkRole::PublicEdge)
+#     .unwrap();
+network
+    .add_route(
+        Route::new(
+            "entrada-controlada",
+            "0.0.0.0/0",
+            RouteTarget::InternetGateway,
+            "el balanceador público recibe tráfico HTTPS",
+        )
+        .unwrap(),
+    )
+    .unwrap();
+
+assert_eq!(
+    network.exposure_for_subnet("edge-a"),
+    Some(Exposure::PubliclyRoutable),
+);
+```
+
+La regla de firewall hace visible la intención. El capítulo rechaza SSH público
+desde Internet como diseño base:
+
+```rust
+use rust_cloud::networking::{
+    FirewallRule, NetworkProtocol, NetworkingDecisionError, TrafficEndpoint,
+};
+
+let public_ssh = FirewallRule::allow(
+    "ssh-publico",
+    TrafficEndpoint::Internet,
+    TrafficEndpoint::Subnet("app-a"),
+    NetworkProtocol::Tcp,
+    22,
+    "atajo operativo",
+);
+
+assert_eq!(
+    public_ssh,
+    Err(NetworkingDecisionError::PublicSshExposure(
+        "no publiques SSH a Internet como diseño base",
+    )),
+);
+```
+
+El objetivo del modelo no es decidir por proveedor. El objetivo es obligar a
+nombrar la frontera, el camino y la intención antes de hablar de AWS, GCP o
+cualquier consola.
+
+## Diagrama
+
+El diagrama del capítulo vive en `diagrams/04-redes-y-vpc.mmd`. Resume la
+lectura principal:
+
+```text
+VPC -> subredes -> rutas posibles -> reglas permitidas -> exposición efectiva
+```
+
+## Ejemplo ejecutable
+
+El ejemplo `examples/networking.rs` construye una VPC educativa para una
+academia: borde público, aplicación privada, datos aislados, ruta pública
+explícita y regla HTTPS interna.
+
+```bash
+cargo run --example networking
+```
+
+El ejemplo no abre conexiones ni contacta proveedores. Su intención es mostrar
+qué decisiones deben quedar visibles antes de crear infraestructura real.
+
+## Práctica sugerida
+
+Antes de dibujar una red cloud, escribe:
+
+1. Frontera: qué vive dentro de la VPC y qué queda fuera.
+2. Subredes: rol, zona lógica y dominio de fallo esperado.
+3. Ingreso público: qué entra desde Internet y por qué.
+4. Salida privada: qué cargas necesitan salir sin aceptar ingreso directo.
+5. Reglas: origen, destino, protocolo, puerto y propósito.
+6. DNS y nombres: cómo se encontrarán los servicios.
+7. Observabilidad: dónde se registran rutas, rechazos y cambios.
+8. Costo: gateways, balanceadores, tráfico entre zonas y conectividad privada.
+
+Si una regla no puede explicar su propósito en una frase, todavía no debería
+estar en el diseño.
 
 ## Decisiones registradas
 
@@ -100,5 +261,5 @@ permitir pruebas unitarias claras.
 
 ## Estado editorial
 
-Este capítulo queda en `implemented`. No está marcado como `reviewed` ni
+Este capítulo está en `implemented`. No está marcado como `reviewed` ni
 `published`.
