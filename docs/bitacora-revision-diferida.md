@@ -22,12 +22,26 @@ aprobación editorial, no publica el curso y no cambia capítulos a `reviewed` n
 | #86 | #43 | Publicación candidata interna. |
 | #94 | #88 | Verificador de enlaces integrado al CI. |
 | #95 | #90 | Verificador de estados editoriales integrado al CI. |
+| #103 | #96 | Verificador de consistencia del manifiesto integrado al CI. |
+| #104 | #96 | PR duplicado sin cambios efectivos tras corrección de rama; registrado como higiene de proceso. |
+| #105 | #97 | Verificador de ejemplos Cargo integrado al CI. |
+| #106 | #98 | Matriz de compuertas automáticas del corte candidato. |
+| #107 | #99 | Guía de revisión por corte para Joel. |
+| #108 | #99 | PR duplicado sin cambios efectivos tras corrección de rama; registrado como higiene de proceso. |
+| #109 | #100 | Checklist de publicación candidata ampliado con evidencia de compuertas. |
+| #115 | #114 | Verificador de anatomía editorial de capítulos. |
+| #116 | #110 | Paquete de revisión humana por capítulo. |
+| #117 | #113 | Verificador de cobertura del paquete de revisión humana. |
 
 ## Evidencia técnica
 
 Las validaciones usadas durante el corte fueron:
 
 - `node scripts/verify-course-links.mjs`;
+- `node scripts/verify-manifest-consistency.mjs`;
+- `node scripts/verify-cargo-examples.mjs`;
+- `node scripts/verify-chapter-anatomy.mjs`;
+- `node scripts/verify-review-packet-coverage.mjs`;
 - `node scripts/verify-editorial-status.mjs`;
 - `cargo fmt --check`;
 - `cargo clippy --all-targets --all-features -- -D warnings`;
@@ -36,6 +50,18 @@ Las validaciones usadas durante el corte fueron:
 - `cargo bench --all-targets`;
 - `git diff --check`;
 - check remoto `rust` en GitHub Actions.
+
+## Incidentes de higiene documentados
+
+Durante el cierre del corte aparecieron PRs duplicados por correcciones de
+rama. Los PRs #104 y #108 no representan avance de contenido; se registran para
+mantener trazabilidad del proceso. La regla vigente queda documentada en
+`docs/higiene-ramas-prs.md`: antes de abrir un PR autónomo, la rama debe tener
+exactamente un commit por encima de `origin/main`, y antes de fusionarlo GitHub
+debe mostrar exactamente un commit en el PR.
+
+Estos incidentes no cambian el contenido del curso, no publican capítulos y no
+marcan nada como `reviewed` ni `published`.
 
 ## Decisiones que no tomó la IA
 

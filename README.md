@@ -114,6 +114,8 @@ node scripts/verify-editorial-status.mjs
   corte candidato y la frontera que sigue siendo humana.
 - `docs/paquete-revision-humana.md` reúne rutas, preguntas y evidencia para
   revisar cada capítulo sin aprobarlo automáticamente.
+- `docs/higiene-ramas-prs.md` documenta la regla de un issue, una rama, un
+  commit principal, un PR y squash merge para bloques autónomos.
 - `docs/00-introduccion.md` define la frontera conceptual de Cloud frente a
   DevOps y arquitectura.
 - `ROADMAP.md` registra el avance del curso sin convertirlo en una fecha

@@ -34,6 +34,12 @@ compuertas pasaron. Si una compuerta falla, el PR no se fusiona hasta corregir
 la causa o hasta crear un issue explícito si la falla revela una decisión de
 arquitectura, currículo o gobernanza.
 
+La higiene de ramas vive en `docs/higiene-ramas-prs.md`. Antes de abrir un PR,
+el agente debe confirmar que `git rev-list --count origin/main..HEAD` devuelve
+`1`. Antes de fusionarlo, debe verificar que GitHub también muestra un solo
+commit en el PR. Si una rama arrastra commits ajenos, el PR se corrige antes de
+fusionarse.
+
 El texto del PR debe usar `Closes #N` para cerrar el issue correspondiente en
 GitHub. Puede incluir también la explicación en español, pero el cierre
 automático depende de la palabra clave en inglés.

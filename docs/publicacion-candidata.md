@@ -20,6 +20,9 @@ La matriz de compuertas automáticas vive en
 El paquete operativo para revisar capítulo por capítulo vive en
 `docs/paquete-revision-humana.md`.
 
+La regla de higiene para ramas, commits únicos y PRs duplicados vive en
+`docs/higiene-ramas-prs.md`.
+
 ## Alcance del corte
 
 El corte incluye:
