@@ -4,7 +4,7 @@
     "title": "Cloud",
     "semester": 5,
     "repository": "https://github.com/jeresoftx/rust-cloud",
-    "status": "planned",
+    "status": "implemented",
     "language": "rust",
     "area": "cloud"
   },

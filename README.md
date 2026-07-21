@@ -30,7 +30,15 @@ Alimenta `rust-ai-engineering`, `rust-travel`, dominios aplicados y cursos
 complementarios como `rust-devops`, `rust-api-design` y
 `software-engineering-handbook`.
 
-## Capítulos planeados
+## Estado editorial
+
+El primer corte completo del curso está en estado `implemented`: los diez
+capítulos tienen explicación, modelo Rust, pruebas, ejemplos, diagramas,
+ejercicios y lectura de costos. Esto no significa que el curso esté publicado.
+La revisión humana de Joel sigue siendo obligatoria antes de usar `reviewed` o
+`published`.
+
+## Capítulos del corte implementado
 
 | # | Capítulo | Módulo sugerido | Estado |
 |---|----------|-----------------|--------|
@@ -45,8 +53,9 @@ complementarios como `rust-devops`, `rust-api-design` y
 | 09 | AWS en la práctica | `src/aws_practice.rs` | implemented |
 | 10 | GCP en la práctica | `src/gcp_practice.rs` | implemented |
 
-Estados posibles: `planned`, `draft`, `implemented`, `tested`,
-`benchmarked`, `reviewed`, `published`.
+Estados posibles: `planned`, `draft`, `implemented`, `tested`, `benchmarked`,
+`reviewed`, `published`. En este repositorio, `implemented` significa listo
+para revisión humana diferida; no equivale a aprobación editorial.
 
 ## Estructura
 
@@ -82,6 +91,7 @@ cargo fmt --check
 cargo clippy --all-targets --all-features -- -D warnings
 cargo test --all-targets
 cargo test --doc
+node scripts/verify-course-links.mjs
 ```
 
 ## Gobernanza
@@ -89,7 +99,9 @@ cargo test --doc
 - `AGENTS.md` es la guía de arranque para humanos e IA en este repositorio.
 - `course.manifest.json` expone el mapa estructurado del curso para
   `academy-web`.
-- `docs/SUMMARY.md` contiene la navegación inicial del curso.
+- `docs/SUMMARY.md` contiene la navegación del curso.
+- `docs/navegacion-y-enlaces.md` registra el cierre de navegación y rutas
+  internas antes de revisión humana.
 - `docs/00-introduccion.md` define la frontera conceptual de Cloud frente a
   DevOps y arquitectura.
 - `ROADMAP.md` registra el avance del curso sin convertirlo en una fecha
