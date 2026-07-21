@@ -28,7 +28,7 @@
       "number": 2,
       "title": "Cómputo",
       "slug": "computo",
-      "status": "planned",
+      "status": "draft",
       "milestone": "02. Cómputo",
       "document": "docs/02-computo.md",
       "module": "src/compute.rs",
