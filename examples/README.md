@@ -26,6 +26,8 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
 - `finops.rs`: compara un costo de producción atribuido contra invocaciones de
   desarrollo sin dueño, presupuesto ni unidad económica y un recurso productivo
   casi sin uso.
+- `aws_practice.rs`: compara un mapeo AWS gobernable contra una decisión que
+  mezcla concepto, red, permisos, credenciales y costo sin suficientes límites.
 - `soluciones/finops_nivel_1.rs`: solución del ejercicio básico de costo
   gobernable.
 - `soluciones/finops_nivel_2.rs`: solución del ejercicio intermedio de

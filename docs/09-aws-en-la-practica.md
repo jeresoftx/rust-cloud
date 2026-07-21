@@ -4,8 +4,10 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 09. AWS en la práctica
-- **Issues:** #33, #34
+- **Issues:** #33, #34, #35
 - **Módulo Rust:** `src/aws_practice.rs`
+- **Diagrama:** `diagrams/09-aws-en-la-practica.mmd`
+- **Ejemplo:** `examples/aws_practice.rs`
 
 ## Concepto
 
@@ -110,8 +112,7 @@ RFC-0001 §10: proveedor después de fundamentos.
 - El capítulo no empieza por comandos de AWS CLI ni por consola.
 - AWS se modela como una traducción de fundamentos a servicios concretos.
 - Los servicios se nombran solo cuando ayudan a explicar una decisión.
-- El modelo Rust mínimo deberá representar una carga AWS educativa sin
-  depender de SDKs.
+- El modelo Rust mínimo representa una carga AWS educativa sin depender de SDKs.
 - Las recomendaciones dependientes de precios, cuotas o límites concretos se
   consideran material vivo y no se publican sin fecha y revisión humana.
 
@@ -130,6 +131,138 @@ externas:
 
 El módulo no usa SDKs ni contacta AWS. Su función es pedagógica: practicar la
 traducción de concepto a servicio antes de tocar una cuenta real.
+
+## Lectura del modelo
+
+`AwsWorkload` junta cinco preguntas que deben aparecer antes de abrir una
+consola:
+
+1. **Qué necesidad existe:** el nombre y propósito humano del workload.
+2. **Qué concepto representa:** cómputo, storage, red, identidad, managed
+   service, serverless, observabilidad o FinOps.
+3. **Qué servicio candidato lo aterriza:** S3, VPC, Lambda, SQS, RDS, Budgets u
+   otro servicio del mapa.
+4. **Qué responsabilidad conserva el equipo:** permisos, red, límites,
+   observabilidad, tags y ciclo de vida.
+5. **Qué no debe entrar al ejemplo:** credenciales reales, permisos amplios o
+   exposición pública sin frontera.
+
+El punto pedagógico es deliberado: AWS aparece como proveedor real, pero el
+modelo obliga a hablar primero de contrato, responsabilidad y señales.
+
+## Cómo leer el módulo Rust
+
+Un mapeo sano declara concepto, servicio, dueño, región, límites y señales:
+
+```rust
+use rust_cloud::aws_practice::{
+    AwsEnvironment, AwsPracticeRequirements, AwsService, AwsWorkload,
+    CloudConcept, DataLifecycle, NetworkExposure,
+};
+
+let workload = AwsWorkload::new(
+    "academy-assets",
+    AwsPracticeRequirements {
+        concept: CloudConcept::Storage,
+        service: AwsService::S3,
+        environment: AwsEnvironment::Production,
+        region: "us-east-1",
+        owner: "equipo academy",
+        purpose: "guardar assets publicados del curso",
+        least_privilege: true,
+        temporary_credentials: true,
+        network_exposure: NetworkExposure::Private,
+        has_limit: true,
+        observability: true,
+        cost_tags: true,
+        data_lifecycle: DataLifecycle::Retained,
+        uses_real_credentials: false,
+    },
+)
+.unwrap();
+
+assert!(workload.evaluate().is_low_risk());
+```
+
+Un ejemplo riesgoso puede usar un servicio que no representa el concepto,
+credenciales permanentes, permisos amplios, red pública sin frontera y falta de
+tags:
+
+```rust
+use rust_cloud::aws_practice::{
+    AwsEnvironment, AwsPracticeFinding, AwsPracticeRequirements, AwsService,
+    AwsWorkload, CloudConcept, DataLifecycle, NetworkExposure,
+};
+
+let workload = AwsWorkload::new(
+    "preview-runner",
+    AwsPracticeRequirements {
+        concept: CloudConcept::Serverless,
+        service: AwsService::Ec2,
+        environment: AwsEnvironment::Development,
+        region: "us-east-1",
+        owner: "",
+        purpose: "ejecutar previews",
+        least_privilege: false,
+        temporary_credentials: false,
+        network_exposure: NetworkExposure::PublicUnbounded,
+        has_limit: false,
+        observability: false,
+        cost_tags: false,
+        data_lifecycle: DataLifecycle::Indefinite,
+        uses_real_credentials: true,
+    },
+)
+.unwrap();
+
+assert!(workload.evaluate().findings().contains(
+    &AwsPracticeFinding::RealCredentialsInExample("preview-runner"),
+));
+```
+
+## Diagrama
+
+El diagrama del capítulo vive en `diagrams/09-aws-en-la-practica.mmd`. Resume
+la lectura principal:
+
+```text
+necesidad -> concepto -> servicio AWS -> responsabilidad -> permisos/red -> señales -> decisión practicable
+```
+
+La ruta sana obliga a justificar el servicio con un concepto del curso. La ruta
+riesgosa aparece cuando el servicio se elige por familiaridad, cuando el ejemplo
+usa credenciales reales o cuando faltan límites, observabilidad y costo
+atribuible.
+
+## Ejemplo ejecutable
+
+El ejemplo `examples/aws_practice.rs` compara un mapeo S3 gobernable contra un
+runner de previews que mezcla concepto, permisos, red, credenciales y costo sin
+suficientes límites.
+
+```bash
+cargo run --example aws_practice
+```
+
+Salida esperada:
+
+```text
+academy-assets: mapeo AWS gobernable
+preview-runner: 10 hallazgos educativos
+```
+
+El ejemplo no usa AWS CLI, SDKs ni credenciales reales. Sirve para practicar qué
+preguntas deben quedar respondidas antes de tocar infraestructura real.
+
+## Ejemplos progresivos
+
+El capítulo usa tres niveles de lectura:
+
+| Nivel | Escenario | Señal principal | Aprendizaje |
+|-------|-----------|-----------------|-------------|
+| Básico | Assets privados en S3 | Mapeo concepto-servicio | Storage no es solo un bucket; requiere dueño, permisos y ciclo de vida |
+| Intermedio | Runner de previews mal modelado | Credenciales y red inseguras | La práctica en AWS no debe normalizar atajos peligrosos |
+| Avanzado | Mapa de servicios por capacidad | Responsabilidad retenida | Cada servicio debe explicar qué delega y qué conserva el equipo |
 
 ## Nota editorial
 
