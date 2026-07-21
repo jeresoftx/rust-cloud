@@ -74,6 +74,7 @@ esperada es:
 
 ## Siguiente paso natural
 
-Completar el milestone `10. GCP en la práctica` con el flujo restante: capítulo
-narrativo expandido, diagrama Mermaid, ejemplo ejecutable, ejercicios,
-soluciones y análisis de costos.
+Preparar una revisión humana del primer corte completo del curso `rust-cloud`:
+verificar continuidad entre capítulos, exactitud técnica, ortografía, ejemplos,
+ejercicios y costos antes de decidir qué material puede pasar de `implemented`
+a `reviewed`.

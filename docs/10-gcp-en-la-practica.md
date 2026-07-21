@@ -4,10 +4,12 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 10. GCP en la práctica
-- **Issues:** #37, #38, #39
+- **Issues:** #37, #38, #39, #40
 - **Módulo Rust:** `src/gcp_practice.rs`
 - **Diagrama:** `diagrams/10-gcp-en-la-practica.mmd`
 - **Ejemplo:** `examples/gcp_practice.rs`
+- **Ejercicios:** `docs/ejercicios/10-gcp-en-la-practica.md`
+- **Costos:** `docs/costos/10-gcp-en-la-practica.md`
 
 ## Concepto
 
@@ -272,6 +274,15 @@ qué preguntas deben quedar respondidas antes de tocar infraestructura real.
 | Básico | API en Cloud Run | Mapeo capacidad-servicio | Compute no es solo una VM; puede delegar runtime y escalado |
 | Intermedio | Runner de previews mal modelado | Identidad y red inseguras | La práctica en GCP no debe normalizar llaves exportadas |
 | Avanzado | Mapa por proyecto y capacidad | Responsabilidad retenida | Cada servicio debe declarar proyecto, labels y señales |
+
+## Ejercicios y costos
+
+Los ejercicios viven en `docs/ejercicios/10-gcp-en-la-practica.md` y tienen
+soluciones compilables en `examples/soluciones/gcp_practice_nivel_*.rs`.
+
+El análisis de costos vive en `docs/costos/10-gcp-en-la-practica.md`. No usa
+precios de proveedor: compara proyectos, service accounts, límites, red,
+observabilidad, labels, ciclo de vida y responsabilidad retenida.
 
 ## Nota editorial
 
