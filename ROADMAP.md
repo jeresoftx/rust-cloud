@@ -48,7 +48,7 @@ esperada es:
 | 04 | Redes y VPC | implemented |
 | 05 | Identidad y accesos | implemented |
 | 06 | Servicios manejados | implemented |
-| 07 | Serverless | draft |
+| 07 | Serverless | implemented |
 | 08 | Costos y FinOps | planned |
 | 09 | AWS en la práctica | planned |
 | 10 | GCP en la práctica | planned |
@@ -74,6 +74,6 @@ esperada es:
 
 ## Siguiente paso natural
 
-Completar el milestone `07. Serverless` con el flujo restante: modelo Rust
-mínimo, capítulo narrativo, diagrama Mermaid, ejemplos progresivos, ejercicios,
-soluciones y análisis de costos.
+Completar el milestone `07. Serverless` con el flujo restante: capítulo
+narrativo, diagrama Mermaid, ejemplos progresivos, ejercicios, soluciones y
+análisis de costos.
