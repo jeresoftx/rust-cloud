@@ -37,6 +37,12 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   rangos duplicados y SSH público.
 - `soluciones/networking_nivel_3.rs`: solución del ejercicio avanzado de red
   mínima para la academia.
+- `soluciones/iam_nivel_1.rs`: solución del ejercicio básico de acceso de bajo
+  riesgo.
+- `soluciones/iam_nivel_2.rs`: solución del ejercicio intermedio de
+  administración amplia sin MFA.
+- `soluciones/iam_nivel_3.rs`: solución del ejercicio avanzado de identidad
+  externa permanente.
 - `soluciones/service_models_nivel_1.rs`: solución del ejercicio básico de
   responsabilidades.
 - `soluciones/service_models_nivel_2.rs`: solución del ejercicio intermedio de
