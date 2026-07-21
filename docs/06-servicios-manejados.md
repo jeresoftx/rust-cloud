@@ -4,10 +4,12 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 06. Servicios manejados
-- **Issues:** #21, #22, #23
+- **Issues:** #21, #22, #23, #24
 - **Módulo Rust:** `src/managed_services.rs`
 - **Diagrama:** `diagrams/06-servicios-manejados.mmd`
 - **Ejemplo:** `examples/managed_services.rs`
+- **Ejercicios:** `docs/ejercicios/06-servicios-manejados.md`
+- **Costos:** `docs/costos/06-servicios-manejados.md`
 
 ## Concepto
 
@@ -205,6 +207,15 @@ cargo run --example managed_services
 
 El ejemplo no contacta proveedores ni consulta precios. Su intención es mostrar
 qué preguntas operativas deben quedar visibles antes de elegir un servicio real.
+
+## Ejercicios y costos
+
+Los ejercicios viven en `docs/ejercicios/06-servicios-manejados.md` y tienen
+soluciones compilables en `examples/soluciones/managed_services_nivel_*.rs`.
+
+El análisis de costos vive en `docs/costos/06-servicios-manejados.md`. No usa
+precios de proveedor ni agrega herramientas de benchmark: compara delegación,
+operación retenida, recuperación, observabilidad, consumo y dependencia.
 
 ## Práctica sugerida
 
