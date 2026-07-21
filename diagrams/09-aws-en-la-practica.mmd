@@ -1,0 +1,24 @@
+flowchart TD
+    A["Necesidad de producto"] --> B["Concepto del curso"]
+    B --> C["Servicio AWS candidato"]
+    C --> D["Responsabilidad retenida"]
+    D --> E["Permisos y credenciales"]
+    E --> F["Red y límites"]
+    F --> G["Observabilidad y costo"]
+    G --> H["Decisión practicable"]
+
+    C --> I{"¿Representa el concepto?"}
+    I -->|"sí"| D
+    I -->|"no"| J["Hallazgo: servicio sin mapa conceptual"]
+
+    E --> K{"¿Usa credenciales reales?"}
+    K -->|"no"| F
+    K -->|"sí"| L["Hallazgo: ejemplo inseguro"]
+
+    F --> M{"¿Tiene frontera clara?"}
+    M -->|"sí"| G
+    M -->|"no"| N["Hallazgo: red o límite ambiguo"]
+
+    G --> O{"¿Tiene tags y señales?"}
+    O -->|"sí"| H
+    O -->|"no"| P["Hallazgo: costo u operación invisible"]

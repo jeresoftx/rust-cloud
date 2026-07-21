@@ -92,6 +92,10 @@ name = "finops"
 path = "examples/finops.rs"
 
 [[example]]
+name = "aws_practice"
+path = "examples/aws_practice.rs"
+
+[[example]]
 name = "finops_nivel_1"
 path = "examples/soluciones/finops_nivel_1.rs"
 
