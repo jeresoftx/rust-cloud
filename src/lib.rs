@@ -4,6 +4,8 @@
 //! gobernanza, el plan y el contrato educativo. Los capítulos posteriores
 //! agregarán módulos por concepto de cloud conforme a RFC-0001 §14.
 
+pub mod service_models;
+
 /// Nombre público del curso dentro de Jeresoft Academy.
 pub const COURSE_NAME: &str = "Cloud";
 
@@ -15,6 +17,10 @@ pub const COURSE_SLUG: &str = "rust-cloud";
 pub enum ChapterStatus {
     /// El capítulo existe en el plan, pero aún no tiene implementación.
     Planned,
+    /// El capítulo tiene una primera especificación editorial.
+    Draft,
+    /// El capítulo ya expone un modelo Rust mínimo verificable.
+    Implemented,
 }
 
 /// Describe un capítulo planeado del curso.
@@ -45,7 +51,7 @@ const PLANNED_CHAPTERS: [Chapter; 10] = [
     Chapter {
         number: 1,
         title: "Modelos de servicio",
-        status: ChapterStatus::Planned,
+        status: ChapterStatus::Implemented,
     },
     Chapter {
         number: 2,
@@ -113,7 +119,9 @@ mod tests {
         assert!(
             chapters
                 .iter()
+                .skip(1)
                 .all(|chapter| chapter.status == ChapterStatus::Planned)
         );
+        assert_eq!(chapters[0].status, ChapterStatus::Implemented);
     }
 }
