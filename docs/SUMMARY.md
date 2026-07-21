@@ -1,0 +1,16 @@
+# Summary
+
+- [Introducción](./00-introduccion.md)
+- [Manifiesto para academy-web](./manifiesto-academy-web.md)
+- [Mapa global del curso](./mapa-global.md)
+- [Checklist de revisión humana](./checklist-revision-capitulo.md)
+- [Modelos de servicio](./01-modelos-de-servicio.md)
+- [Cómputo](./02-computo.md)
+- [Almacenamiento](./03-almacenamiento.md)
+- [Redes y VPC](./04-redes-y-vpc.md)
+- [Identidad y accesos](./05-identidad-y-accesos.md)
+- [Servicios manejados](./06-servicios-manejados.md)
+- [Serverless](./07-serverless.md)
+- [Costos y FinOps](./08-costos-y-finops.md)
+- [AWS en la práctica](./09-aws-en-la-practica.md)
+- [GCP en la práctica](./10-gcp-en-la-practica.md)

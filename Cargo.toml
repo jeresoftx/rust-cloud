@@ -1,0 +1,12 @@
+[package]
+name = "rust-cloud"
+version = "0.1.0"
+edition = "2024"
+description = "Curso de Cloud de Jeresoft Academy: fundamentos de plataformas, operación y costos."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/jeresoftx/rust-cloud"
+readme = "README.md"
+keywords = ["cloud", "rust", "academy", "aws", "gcp"]
+categories = ["development-tools"]
+
+[dependencies]

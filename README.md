@@ -1,0 +1,106 @@
+# Rust Cloud
+
+Repositorio del camino troncal de Jeresoft Academy para estudiar Cloud en
+Rust. Pertenece al Semestre 5 del plan de estudios junto con
+`rust-software-architecture` (RFC-0001 §10).
+
+El objetivo no es memorizar catálogos de AWS o GCP. El objetivo es aprender a
+razonar sobre plataformas: modelos de servicio, cómputo, almacenamiento, red,
+identidad, servicios manejados, serverless, costos y operación con decisiones
+explícitas.
+
+## Qué contiene
+
+- Capítulos en Markdown compatibles con publicación posterior.
+- Modelos Rust pequeños para representar decisiones de plataforma.
+- Ejemplos progresivos: básico, intermedio, avanzado y caso real.
+- Tests unitarios, tests de integración y doctests.
+- Benchmarks cuando una decisión tenga costo observable.
+- Diagramas Mermaid y recursos visuales.
+- Ejercicios graduados con soluciones para niveles 1 a 3.
+
+## Lugar en el camino
+
+Este curso vive en el Semestre 5. Recibe fundamentos de
+`rust-networking`, `rust-operating-systems`, `rust-database-internals`,
+`rust-concurrency`, `rust-distributed-systems`, `rust-system-design` y
+`rust-software-architecture`.
+
+Alimenta `rust-ai-engineering`, `rust-travel`, dominios aplicados y cursos
+complementarios como `rust-devops`, `rust-api-design` y
+`software-engineering-handbook`.
+
+## Capítulos planeados
+
+| # | Capítulo | Módulo sugerido | Estado |
+|---|----------|-----------------|--------|
+| 01 | Modelos de servicio | `src/service_models.rs` | planned |
+| 02 | Cómputo | `src/compute.rs` | planned |
+| 03 | Almacenamiento | `src/storage.rs` | planned |
+| 04 | Redes y VPC | `src/networking.rs` | planned |
+| 05 | Identidad y accesos | `src/iam.rs` | planned |
+| 06 | Servicios manejados | `src/managed_services.rs` | planned |
+| 07 | Serverless | `src/serverless.rs` | planned |
+| 08 | Costos y FinOps | `src/finops.rs` | planned |
+| 09 | AWS en la práctica | `src/aws_practice.rs` | planned |
+| 10 | GCP en la práctica | `src/gcp_practice.rs` | planned |
+
+Estados posibles: `planned`, `draft`, `implemented`, `tested`,
+`benchmarked`, `reviewed`, `published`.
+
+## Estructura
+
+```text
+AGENTS.md
+ROADMAP.md
+LICENSE.md
+LICENSE-MIT
+LICENSE-APACHE
+LICENSE-CC-BY-SA-4.0.md
+course.manifest.json
+docs/
+src/
+examples/
+tests/
+benches/
+diagrams/
+assets/
+```
+
+## Cómo usarlo
+
+Ejecutar pruebas:
+
+```bash
+cargo test
+```
+
+Verificación completa:
+
+```bash
+cargo fmt --check
+cargo clippy --all-targets --all-features -- -D warnings
+cargo test --all-targets
+cargo test --doc
+```
+
+## Gobernanza
+
+- `AGENTS.md` es la guía de arranque para humanos e IA en este repositorio.
+- `course.manifest.json` expone el mapa estructurado del curso para
+  `academy-web`.
+- `docs/SUMMARY.md` contiene la navegación inicial del curso.
+- `docs/00-introduccion.md` define la frontera conceptual de Cloud frente a
+  DevOps y arquitectura.
+- `ROADMAP.md` registra el avance del curso sin convertirlo en una fecha
+  límite.
+- Antes de tocar código de curso, el plan completo debe existir como milestones
+  e issues de GitHub.
+- `LICENSE.md` resume la doble licencia: código bajo `MIT OR Apache-2.0`;
+  contenido educativo bajo `CC BY-SA 4.0`.
+
+## Filosofía
+
+Este repositorio debe poder leerse como un libro de ingeniería. La claridad
+gana sobre el ingenio, la calidad gana sobre la velocidad, y ningún capítulo se
+considera publicable hasta cumplir la anatomía completa de RFC-0001 §14.
