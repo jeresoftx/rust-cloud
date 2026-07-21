@@ -29,6 +29,12 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   clasificación de datos.
 - `soluciones/storage_nivel_3.rs`: solución del ejercicio avanzado de promesas
   contradictorias.
+- `soluciones/networking_nivel_1.rs`: solución del ejercicio básico de
+  exposición pública y privada.
+- `soluciones/networking_nivel_2.rs`: solución del ejercicio intermedio de
+  rangos duplicados y SSH público.
+- `soluciones/networking_nivel_3.rs`: solución del ejercicio avanzado de red
+  mínima para la academia.
 - `soluciones/service_models_nivel_1.rs`: solución del ejercicio básico de
   responsabilidades.
 - `soluciones/service_models_nivel_2.rs`: solución del ejercicio intermedio de

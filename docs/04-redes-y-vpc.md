@@ -4,10 +4,12 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 04. Redes y VPC
-- **Issues:** #14, #15
+- **Issues:** #14, #15, #16
 - **Módulo Rust:** `src/networking.rs`
 - **Diagrama:** `diagrams/04-redes-y-vpc.mmd`
 - **Ejemplo:** `examples/networking.rs`
+- **Ejercicios:** `docs/ejercicios/04-redes-y-vpc.md`
+- **Costos:** `docs/costos/04-redes-y-vpc.md`
 
 ## Concepto
 
@@ -232,7 +234,10 @@ cargo run --example networking
 ```
 
 El ejemplo no abre conexiones ni contacta proveedores. Su intención es mostrar
-qué decisiones deben quedar visibles antes de crear infraestructura real.
+qué decisiones deben quedar visibles antes de crear infraestructura real. Las
+soluciones graduadas viven en `examples/soluciones/networking_nivel_1.rs`,
+`examples/soluciones/networking_nivel_2.rs` y
+`examples/soluciones/networking_nivel_3.rs`.
 
 ## Práctica sugerida
 
@@ -249,6 +254,9 @@ Antes de dibujar una red cloud, escribe:
 
 Si una regla no puede explicar su propósito en una frase, todavía no debería
 estar en el diseño.
+
+Los ejercicios graduados viven en `docs/ejercicios/04-redes-y-vpc.md`. El
+análisis de costos del capítulo vive en `docs/costos/04-redes-y-vpc.md`.
 
 ## Decisiones registradas
 
