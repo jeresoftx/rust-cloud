@@ -102,6 +102,8 @@ node scripts/verify-course-links.mjs
 - `docs/SUMMARY.md` contiene la navegación del curso.
 - `docs/navegacion-y-enlaces.md` registra el cierre de navegación y rutas
   internas antes de revisión humana.
+- `docs/publicacion-candidata.md` registra el corte candidato interno y sus
+  verificaciones sin publicarlo automáticamente.
 - `docs/00-introduccion.md` define la frontera conceptual de Cloud frente a
   DevOps y arquitectura.
 - `ROADMAP.md` registra el avance del curso sin convertirlo en una fecha
