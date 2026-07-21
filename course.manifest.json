@@ -140,7 +140,7 @@
       "number": 10,
       "title": "GCP en la práctica",
       "slug": "gcp-en-la-practica",
-      "status": "planned",
+      "status": "draft",
       "milestone": "10. GCP en la práctica",
       "document": "docs/10-gcp-en-la-practica.md",
       "module": "src/gcp_practice.rs",
