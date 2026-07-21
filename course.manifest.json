@@ -42,7 +42,7 @@
       "number": 3,
       "title": "Almacenamiento",
       "slug": "almacenamiento",
-      "status": "draft",
+      "status": "implemented",
       "milestone": "03. Almacenamiento",
       "document": "docs/03-almacenamiento.md",
       "module": "src/storage.rs",
