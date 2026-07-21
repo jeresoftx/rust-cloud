@@ -43,7 +43,7 @@ esperada es:
 | # | Capítulo | Estado |
 |---|----------|--------|
 | 01 | Modelos de servicio | implemented |
-| 02 | Cómputo | draft |
+| 02 | Cómputo | implemented |
 | 03 | Almacenamiento | planned |
 | 04 | Redes y VPC | planned |
 | 05 | Identidad y accesos | planned |

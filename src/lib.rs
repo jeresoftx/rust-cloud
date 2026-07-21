@@ -4,6 +4,7 @@
 //! gobernanza, el plan y el contrato educativo. Los capítulos posteriores
 //! agregarán módulos por concepto de cloud conforme a RFC-0001 §14.
 
+pub mod compute;
 pub mod service_models;
 
 /// Nombre público del curso dentro de Jeresoft Academy.
@@ -56,7 +57,7 @@ const PLANNED_CHAPTERS: [Chapter; 10] = [
     Chapter {
         number: 2,
         title: "Cómputo",
-        status: ChapterStatus::Draft,
+        status: ChapterStatus::Implemented,
     },
     Chapter {
         number: 3,
@@ -123,6 +124,6 @@ mod tests {
                 .all(|chapter| chapter.status == ChapterStatus::Planned)
         );
         assert_eq!(chapters[0].status, ChapterStatus::Implemented);
-        assert_eq!(chapters[1].status, ChapterStatus::Draft);
+        assert_eq!(chapters[1].status, ChapterStatus::Implemented);
     }
 }

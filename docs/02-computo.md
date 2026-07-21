@@ -2,9 +2,9 @@
 
 - **Curso:** rust-cloud
 - **Semestre:** 5
-- **Estado:** draft
+- **Estado:** implemented
 - **Milestone:** 02. Cómputo
-- **Issue:** #5
+- **Issues:** #5, #6
 - **Módulo Rust:** `src/compute.rs`
 
 ## Concepto
@@ -87,7 +87,7 @@ como fuente de verdad del capítulo.
 
 ## Requisitos funcionales del modelo Rust
 
-El módulo `src/compute.rs` debe representar, en una primera versión:
+El módulo `src/compute.rs` representa, en una primera versión:
 
 - formas de cómputo;
 - recursos solicitados por una carga;
@@ -104,14 +104,19 @@ El módulo `src/compute.rs` debe representar, en una primera versión:
 - Pruebas para límites, clasificación de carga y errores de decisión.
 - Código pequeño: el objetivo es razonar cómputo, no simular un scheduler real.
 
-## Decisiones pendientes para el siguiente issue
+## Decisiones registradas en el modelo Rust
 
-- Nombrar las formas exactas de cómputo del modelo Rust.
-- Decidir si contenedor administrado y función se modelan como variantes
-  separadas o como configuraciones de una plataforma.
-- Definir qué señales de elasticidad serán booleanos, enum o puntajes
-  educativos.
+- Las formas de cómputo del modelo son: máquina virtual, contenedor,
+  contenedor administrado, función y trabajo batch.
+- Contenedor administrado y función se modelan como variantes separadas porque
+  enseñan fronteras distintas de ciclo de vida, escalado y control.
+- Elasticidad, control y carga operativa se representan como puntajes
+  educativos (`Low`, `Medium`, `High`), no como métricas reales.
+- Una recomendación sin recursos mínimos devuelve error explícito.
+- Una carga que exige control de sistema operativo y baja carga operativa a la
+  vez devuelve conflicto: el modelo no decide el tradeoff por el estudiante.
 
 ## Estado editorial
 
-Este capítulo está en `draft`. No está marcado como `reviewed` ni `published`.
+Este capítulo está en `implemented`. No está marcado como `reviewed` ni
+`published`.
