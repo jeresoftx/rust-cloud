@@ -52,6 +52,10 @@ name = "networking"
 path = "examples/networking.rs"
 
 [[example]]
+name = "iam"
+path = "examples/iam.rs"
+
+[[example]]
 name = "networking_nivel_1"
 path = "examples/soluciones/networking_nivel_1.rs"
 

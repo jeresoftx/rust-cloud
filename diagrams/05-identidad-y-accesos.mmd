@@ -1,0 +1,17 @@
+flowchart TD
+    A[Principal] --> B[Accion]
+    B --> C[Recurso]
+    C --> D[Alcance]
+    D --> E[Duracion]
+    E --> F[Condicion]
+    F --> G[Auditoria]
+    G --> H[AccessGrant]
+    H --> I[AccessPlan]
+    I --> J[AccessEvaluation]
+    J --> K{Hallazgos}
+    K -->|sin hallazgos| L[Bajo riesgo educativo]
+    K -->|comodin admin| M[Riesgo explicito]
+    K -->|humano sin MFA| M
+    K -->|externo permanente| M
+    K -->|frontera sin condicion| M
+    K -->|sin auditoria| M
