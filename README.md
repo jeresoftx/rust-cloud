@@ -35,7 +35,7 @@ complementarios como `rust-devops`, `rust-api-design` y
 | # | Capítulo | Módulo sugerido | Estado |
 |---|----------|-----------------|--------|
 | 01 | Modelos de servicio | `src/service_models.rs` | implemented |
-| 02 | Cómputo | `src/compute.rs` | draft |
+| 02 | Cómputo | `src/compute.rs` | implemented |
 | 03 | Almacenamiento | `src/storage.rs` | planned |
 | 04 | Redes y VPC | `src/networking.rs` | planned |
 | 05 | Identidad y accesos | `src/iam.rs` | planned |
