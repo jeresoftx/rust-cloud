@@ -1,0 +1,35 @@
+flowchart LR
+    classDef provider fill:#102033,stroke:#86b7ff,color:#f7fbff
+    classDef team fill:#2f250b,stroke:#f3c542,color:#fff7d6
+    classDef shared fill:#1f2a1f,stroke:#81c784,color:#f3fff3
+    classDef model fill:#111111,stroke:#d6a832,color:#f7f0dd
+
+    subgraph IaaS["IaaS"]
+        IaaSPhysical["Infraestructura física"]:::provider
+        IaaSVirtualization["Virtualización"]:::provider
+        IaaSOS["Sistema operativo"]:::team
+        IaaSRuntime["Runtime"]:::team
+        IaaSApp["Código y datos"]:::team
+    end
+
+    subgraph PaaS["PaaS"]
+        PaaSPlatform["Infraestructura y plataforma"]:::provider
+        PaaSRuntime["Runtime"]:::provider
+        PaaSApp["Código y datos"]:::team
+    end
+
+    subgraph Serverless["Serverless"]
+        ServerlessPlatform["Runtime, capacidad y escalado"]:::provider
+        ServerlessCode["Funciones o eventos"]:::team
+        ServerlessData["Datos"]:::shared
+    end
+
+    subgraph SaaS["SaaS"]
+        SaaSProduct["Aplicación completa"]:::provider
+        SaaSUse["Uso, reglas y datos"]:::shared
+    end
+
+    IaaS --> PaaS --> Serverless --> SaaS
+
+    Control["Más control del equipo"]:::team --> IaaS
+    SaaS --> Operations["Menor carga operativa"]:::provider
