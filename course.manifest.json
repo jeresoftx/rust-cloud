@@ -112,7 +112,7 @@
       "number": 8,
       "title": "Costos y FinOps",
       "slug": "costos-y-finops",
-      "status": "planned",
+      "status": "draft",
       "milestone": "08. Costos y FinOps",
       "document": "docs/08-costos-y-finops.md",
       "module": "src/finops.rs",

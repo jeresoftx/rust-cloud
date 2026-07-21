@@ -49,7 +49,7 @@ esperada es:
 | 05 | Identidad y accesos | implemented |
 | 06 | Servicios manejados | implemented |
 | 07 | Serverless | implemented |
-| 08 | Costos y FinOps | planned |
+| 08 | Costos y FinOps | draft |
 | 09 | AWS en la práctica | planned |
 | 10 | GCP en la práctica | planned |
 
@@ -74,5 +74,6 @@ esperada es:
 
 ## Siguiente paso natural
 
-Iniciar el milestone `08. Costos y FinOps` con concepto, problema, alternativas
-e invariantes antes de escribir el modelo Rust mínimo.
+Completar el milestone `08. Costos y FinOps` con el flujo restante: modelo Rust
+mínimo, capítulo narrativo, diagrama Mermaid, ejemplos progresivos, ejercicios,
+soluciones y análisis de costos.
