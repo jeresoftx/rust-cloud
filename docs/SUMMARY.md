@@ -3,6 +3,7 @@
 - [Introducción](./00-introduccion.md)
 - [Manifiesto para academy-web](./manifiesto-academy-web.md)
 - [Mapa global del curso](./mapa-global.md)
+- [Navegación y enlaces](./navegacion-y-enlaces.md)
 - [Checklist de revisión humana](./checklist-revision-capitulo.md)
 - [Modelos de servicio](./01-modelos-de-servicio.md)
   - [Ejercicios: modelos de servicio](./ejercicios/01-modelos-de-servicio.md)
