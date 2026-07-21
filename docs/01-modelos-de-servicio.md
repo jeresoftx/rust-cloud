@@ -8,6 +8,8 @@
 - **Módulo Rust:** `src/service_models.rs`
 - **Diagrama:** `diagrams/01-modelos-de-servicio.mmd`
 - **Ejemplo:** `examples/service_models.rs`
+- **Ejercicios:** `docs/ejercicios/01-modelos-de-servicio.md`
+- **Costos:** `docs/costos/01-modelos-de-servicio.md`
 
 ## Concepto
 
@@ -207,6 +209,9 @@ Antes de elegir un servicio concreto, escribe cuatro columnas:
 
 Después compara el resultado contra el módulo Rust. Si no puedes llenar la
 columna de supuestos, todavía no estás listo para escoger un modelo de servicio.
+
+Los ejercicios graduados viven en `docs/ejercicios/01-modelos-de-servicio.md`.
+El análisis de costos del capítulo vive en `docs/costos/01-modelos-de-servicio.md`.
 
 ## Estado editorial
 
