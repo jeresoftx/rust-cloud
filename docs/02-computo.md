@@ -8,6 +8,8 @@
 - **Módulo Rust:** `src/compute.rs`
 - **Diagrama:** `diagrams/02-computo.mmd`
 - **Ejemplo:** `examples/compute.rs`
+- **Ejercicios:** `docs/ejercicios/02-computo.md`
+- **Costos:** `docs/costos/02-computo.md`
 
 ## Concepto
 
@@ -214,6 +216,9 @@ Antes de escoger una forma de cómputo, escribe:
 
 Si la respuesta no menciona recursos y ciclo de vida, todavía no es una decisión
 de cómputo; es una preferencia por una herramienta.
+
+Los ejercicios graduados viven en `docs/ejercicios/02-computo.md`. El análisis
+de costos del capítulo vive en `docs/costos/02-computo.md`.
 
 ## Estado editorial
 
