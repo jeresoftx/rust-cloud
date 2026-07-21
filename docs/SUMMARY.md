@@ -23,6 +23,8 @@
   - [Ejercicios: servicios manejados](./ejercicios/06-servicios-manejados.md)
   - [Costos: servicios manejados](./costos/06-servicios-manejados.md)
 - [Serverless](./07-serverless.md)
+  - [Ejercicios: serverless](./ejercicios/07-serverless.md)
+  - [Costos: serverless](./costos/07-serverless.md)
 - [Costos y FinOps](./08-costos-y-finops.md)
 - [AWS en la práctica](./09-aws-en-la-practica.md)
 - [GCP en la práctica](./10-gcp-en-la-practica.md)

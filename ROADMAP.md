@@ -74,5 +74,5 @@ esperada es:
 
 ## Siguiente paso natural
 
-Completar el milestone `07. Serverless` con el flujo restante: ejercicios,
-soluciones y análisis de costos.
+Iniciar el milestone `08. Costos y FinOps` con concepto, problema, alternativas
+e invariantes antes de escribir el modelo Rust mínimo.
