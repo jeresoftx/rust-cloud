@@ -1,0 +1,24 @@
+flowchart LR
+    classDef boundary fill:#101820,stroke:#86b7ff,color:#f7fbff
+    classDef subnet fill:#111111,stroke:#d6a832,color:#f7f0dd
+    classDef route fill:#2f250b,stroke:#f3c542,color:#fff7d6
+    classDef rule fill:#14251d,stroke:#77ddaa,color:#effff5
+    classDef risk fill:#2a1414,stroke:#ef9a9a,color:#fff0f0
+
+    Internet["Internet"]:::risk --> Edge["Borde público"]:::subnet
+    Vpc["Red virtual / VPC"]:::boundary --> Edge
+    Vpc --> Private["Subred privada"]:::subnet
+    Vpc --> Data["Subred aislada"]:::subnet
+
+    Edge --> RoutePublic["Ruta a Internet Gateway"]:::route
+    Private --> RouteLocal["Ruta local"]:::route
+    Private --> RouteNat["Ruta a NAT / salida privada"]:::route
+    Data --> RouteLocal
+
+    Internet --> RuleHttps["Regla HTTPS explícita"]:::rule
+    Edge --> RuleApp["Regla hacia app privada"]:::rule
+    Private --> RuleData["Regla hacia datos"]:::rule
+
+    RuleHttps --> Exposure["Exposición pública justificada"]:::risk
+    RuleApp --> Isolation["Aislamiento por propósito"]:::boundary
+    RuleData --> Isolation

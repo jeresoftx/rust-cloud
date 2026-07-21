@@ -15,6 +15,8 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   cargas pequeñas.
 - `storage.rs`: compara formas de almacenamiento y recomienda decisiones para
   datos comunes de una academia.
+- `networking.rs`: construye una VPC educativa con subred pública, subredes
+  privadas, ruta pública explícita y reglas de firewall con propósito.
 - `soluciones/compute_nivel_1.rs`: solución del ejercicio básico de recursos y
   límites.
 - `soluciones/compute_nivel_2.rs`: solución del ejercicio intermedio de
