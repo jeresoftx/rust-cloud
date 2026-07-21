@@ -96,6 +96,8 @@ cargo test --doc
   límite.
 - El GitHub Project del curso vive en
   `https://github.com/users/jeresoftx/projects/10`.
+- Ese Project debe tener su vista principal agrupada por `Milestone`; si no se
+  ve agrupado así, la configuración de GitHub no está completa.
 - Antes de tocar código de curso, el plan completo debe existir como milestones
   e issues de GitHub.
 - `LICENSE.md` resume la doble licencia: código bajo `MIT OR Apache-2.0`;

@@ -58,7 +58,11 @@ issues de GitHub:
   autónomo con revisión diferida.
 
 Si se usa GitHub Project, debe estar asociado al repositorio, contener todos los
-issues accionables y tener su vista principal agrupada por `Milestone`.
+issues accionables y tener su vista principal agrupada por `Milestone`. No
+basta con que los issues tengan milestone: la vista principal del Project debe
+mostrar la agrupación activa. Si una herramienta no puede configurarla, el
+agente debe pedir la intervención necesaria antes de declarar completo el
+andamiaje de GitHub.
 
 ## Modo autónomo con revisión diferida
 
