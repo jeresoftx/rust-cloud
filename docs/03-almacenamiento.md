@@ -8,6 +8,8 @@
 - **Módulo Rust:** `src/storage.rs`
 - **Diagrama:** `diagrams/03-almacenamiento.mmd`
 - **Ejemplo:** `examples/storage.rs`
+- **Ejercicios:** `docs/ejercicios/03-almacenamiento.md`
+- **Costos:** `docs/costos/03-almacenamiento.md`
 
 ## Concepto
 
@@ -228,6 +230,9 @@ Antes de elegir almacenamiento, escribe:
 
 Si una decisión no declara fuente de verdad, todavía no es una decisión de
 almacenamiento; es solo un lugar donde se puso un dato.
+
+Los ejercicios graduados viven en `docs/ejercicios/03-almacenamiento.md`. El
+análisis de costos del capítulo vive en `docs/costos/03-almacenamiento.md`.
 
 ## Estado editorial
 
