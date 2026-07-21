@@ -26,6 +26,12 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
 - `finops.rs`: compara un costo de producción atribuido contra invocaciones de
   desarrollo sin dueño, presupuesto ni unidad económica y un recurso productivo
   casi sin uso.
+- `soluciones/finops_nivel_1.rs`: solución del ejercicio básico de costo
+  gobernable.
+- `soluciones/finops_nivel_2.rs`: solución del ejercicio intermedio de
+  elasticidad sin límite.
+- `soluciones/finops_nivel_3.rs`: solución del ejercicio avanzado de
+  observabilidad, idle y tradeoffs.
 - `soluciones/serverless_nivel_1.rs`: solución del ejercicio básico de handler
   de cola acotado.
 - `soluciones/serverless_nivel_2.rs`: solución del ejercicio intermedio de
