@@ -86,7 +86,7 @@ const PLANNED_CHAPTERS: [Chapter; 10] = [
     Chapter {
         number: 7,
         title: "Serverless",
-        status: ChapterStatus::Planned,
+        status: ChapterStatus::Draft,
     },
     Chapter {
         number: 8,
@@ -124,7 +124,7 @@ mod tests {
         assert!(
             chapters
                 .iter()
-                .skip(6)
+                .skip(7)
                 .all(|chapter| chapter.status == ChapterStatus::Planned)
         );
         assert_eq!(chapters[0].status, ChapterStatus::Implemented);
@@ -133,5 +133,6 @@ mod tests {
         assert_eq!(chapters[3].status, ChapterStatus::Implemented);
         assert_eq!(chapters[4].status, ChapterStatus::Implemented);
         assert_eq!(chapters[5].status, ChapterStatus::Implemented);
+        assert_eq!(chapters[6].status, ChapterStatus::Draft);
     }
 }
