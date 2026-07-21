@@ -44,7 +44,7 @@ esperada es:
 |---|----------|--------|
 | 01 | Modelos de servicio | implemented |
 | 02 | Cómputo | implemented |
-| 03 | Almacenamiento | planned |
+| 03 | Almacenamiento | draft |
 | 04 | Redes y VPC | planned |
 | 05 | Identidad y accesos | planned |
 | 06 | Servicios manejados | planned |
