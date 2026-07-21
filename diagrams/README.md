@@ -9,3 +9,5 @@ responsabilidades o flujos; no decorar el capítulo.
   Serverless y SaaS.
 - `02-computo.mmd`: flujo de decisión desde carga y restricciones hacia modo de
   cómputo.
+- `03-almacenamiento.mmd`: flujo de decisión desde promesa del dato hacia forma
+  de almacenamiento.

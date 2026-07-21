@@ -13,6 +13,8 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   depender de SDKs externos.
 - `compute.rs`: compara modos de cómputo y recomienda formas de ejecución para
   cargas pequeñas.
+- `storage.rs`: compara formas de almacenamiento y recomienda decisiones para
+  datos comunes de una academia.
 - `soluciones/compute_nivel_1.rs`: solución del ejercicio básico de recursos y
   límites.
 - `soluciones/compute_nivel_2.rs`: solución del ejercicio intermedio de

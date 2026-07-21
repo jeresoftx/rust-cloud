@@ -1,0 +1,29 @@
+flowchart LR
+    classDef data fill:#101820,stroke:#86b7ff,color:#f7fbff
+    classDef decision fill:#2f250b,stroke:#f3c542,color:#fff7d6
+    classDef mode fill:#111111,stroke:#d6a832,color:#f7f0dd
+    classDef warning fill:#2a1414,stroke:#ef9a9a,color:#fff0f0
+
+    Data["Dato"]:::data --> Truth["Fuente de verdad o temporal"]:::decision
+    Data --> Size["Tamaño"]:::decision
+    Data --> Access["Patrón de acceso"]:::decision
+    Data --> Consistency["Consistencia"]:::decision
+    Data --> Lifecycle["Ciclo de vida"]:::decision
+
+    Truth --> Choose["Elegir forma de almacenamiento"]:::decision
+    Size --> Choose
+    Access --> Choose
+    Consistency --> Choose
+    Lifecycle --> Choose
+
+    Choose --> Object["Objeto"]:::mode
+    Choose --> Block["Bloque"]:::mode
+    Choose --> File["Archivo"]:::mode
+    Choose --> Ephemeral["Efímero"]:::mode
+    Choose --> Archive["Archivo histórico"]:::mode
+
+    Object --> ObjectRisk["Clave y durabilidad, no disco local"]:::warning
+    Block --> BlockRisk["Persistencia cercana a una carga"]:::warning
+    File --> FileRisk["Vista compartida, coordinación importa"]:::warning
+    Ephemeral --> EphemeralRisk["Rápido, no fuente de verdad"]:::warning
+    Archive --> ArchiveRisk["Retención alta, recuperación lenta"]:::warning
