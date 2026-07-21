@@ -2,9 +2,9 @@
 
 - **Curso:** rust-cloud
 - **Semestre:** 5
-- **Estado:** draft
+- **Estado:** implemented
 - **Milestone:** 05. Identidad y accesos
-- **Issue:** #17
+- **Issues:** #17, #18
 - **Módulo Rust:** `src/iam.rs`
 
 ## Concepto
@@ -80,32 +80,46 @@ antes de herramienta, alternativas antes de elección. También respeta RFC-0001
 - Los nombres, límites y servicios de proveedor son material vivo y deben
   revisarse cuando se usen ejemplos fechados.
 
-## Requisitos para `src/iam.rs`
+## Modelo Rust mínimo
 
-El módulo Rust mínimo deberá modelar, sin dependencias externas:
+El módulo Rust mínimo vive en `src/iam.rs` y modela, sin dependencias externas:
 
-- sujetos de acceso: humano, servicio, workload y automatización;
+- sujetos de acceso: humano, cuenta de servicio, workload, automatización e
+  identidad externa;
 - acciones sobre recursos cloud;
 - recursos con alcance educativo;
-- duración del permiso: permanente, temporal o emergente;
-- políticas o grants con propósito explícito;
-- evaluación educativa de una solicitud de acceso;
+- duración de credenciales: permanente, sesión temporal o acceso emergente;
+- grants con propósito explícito;
+- planes de acceso con hallazgos educativos de riesgo;
 - errores legibles cuando falte sujeto, acción, recurso, propósito o alcance;
-- señales de riesgo cuando aparezcan comodines o permisos administrativos.
+- señales de riesgo cuando aparezcan comodines, permisos administrativos,
+  identidades externas permanentes, fronteras cruzadas sin condición o permisos
+  privilegiados sin auditoría.
 
 El módulo no debe intentar implementar un motor IAM real ni reemplazar políticas
 de AWS, GCP u otro proveedor. Su función es pedagógica: hacer visibles las
 preguntas de autorización y permitir pruebas unitarias claras.
 
-## Decisiones pendientes
+## Decisiones registradas
 
-- Definir si una acción se modela como enum cerrado o como texto educativo
-  validado.
-- Definir la granularidad inicial de recursos y alcance.
-- Nombrar los errores públicos del módulo antes de escribir ejemplos.
-- Decidir cómo representar permisos amplios sin normalizarlos como buena
-  práctica.
+- Las acciones se modelan como enum cerrado (`AccessAction`) para mantener el
+  foco en intención educativa, no en sintaxis de proveedor.
+- Las identidades se modelan como `Principal`: nombre, tipo (`PrincipalKind`),
+  frontera de confianza (`TrustBoundary`), duración de credenciales y señal de
+  MFA.
+- Los recursos se modelan dentro de cada `AccessGrant` con nombre,
+  `ResourceKind` y `ResourceScope`.
+- Los permisos se representan como `AccessGrant`: identidad, recurso, acción,
+  alcance, propósito, condición opcional y evento auditable opcional.
+- Un `AccessPlan` agrupa grants y produce `AccessEvaluation` con hallazgos
+  educativos (`AccessFinding`).
+- Los hallazgos hacen visibles permisos administrativos con comodín, humanos
+  administradores sin MFA, acceso externo permanente, fronteras cruzadas sin
+  condición y permisos privilegiados sin auditoría.
+- Los errores públicos viven en `AccessDecisionError` para que pruebas y
+  ejemplos expliquen cada rechazo.
 
 ## Estado editorial
 
-Este capítulo queda en `draft`. No está marcado como `reviewed` ni `published`.
+Este capítulo queda en `implemented`. No está marcado como `reviewed` ni
+`published`.

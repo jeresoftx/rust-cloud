@@ -38,7 +38,7 @@ complementarios como `rust-devops`, `rust-api-design` y
 | 02 | Cómputo | `src/compute.rs` | implemented |
 | 03 | Almacenamiento | `src/storage.rs` | implemented |
 | 04 | Redes y VPC | `src/networking.rs` | implemented |
-| 05 | Identidad y accesos | `src/iam.rs` | draft |
+| 05 | Identidad y accesos | `src/iam.rs` | implemented |
 | 06 | Servicios manejados | `src/managed_services.rs` | planned |
 | 07 | Serverless | `src/serverless.rs` | planned |
 | 08 | Costos y FinOps | `src/finops.rs` | planned |

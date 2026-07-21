@@ -46,7 +46,7 @@ esperada es:
 | 02 | Cómputo | implemented |
 | 03 | Almacenamiento | implemented |
 | 04 | Redes y VPC | implemented |
-| 05 | Identidad y accesos | draft |
+| 05 | Identidad y accesos | implemented |
 | 06 | Servicios manejados | planned |
 | 07 | Serverless | planned |
 | 08 | Costos y FinOps | planned |
@@ -74,6 +74,6 @@ esperada es:
 
 ## Siguiente paso natural
 
-Completar el milestone `05. Identidad y accesos` con el flujo completo:
-modelo Rust mínimo, capítulo narrativo, diagrama Mermaid, ejemplos progresivos,
-ejercicios, soluciones y análisis de costos.
+Completar el milestone `05. Identidad y accesos` con el flujo restante:
+capítulo narrativo, diagrama Mermaid, ejemplos progresivos, ejercicios,
+soluciones y análisis de costos.
