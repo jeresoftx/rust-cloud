@@ -30,6 +30,12 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   mezcla concepto, red, permisos, credenciales y costo sin suficientes límites.
 - `gcp_practice.rs`: compara un mapeo GCP gobernable contra una decisión que
   mezcla capacidad, proyecto, identidad, red y costo sin suficientes límites.
+- `soluciones/gcp_practice_nivel_1.rs`: solución del ejercicio básico de Cloud
+  Run gobernable.
+- `soluciones/gcp_practice_nivel_2.rs`: solución del ejercicio intermedio de
+  runner de previews riesgoso.
+- `soluciones/gcp_practice_nivel_3.rs`: solución del ejercicio avanzado de
+  matriz GCP por proyecto y capacidad.
 - `soluciones/aws_practice_nivel_1.rs`: solución del ejercicio básico de S3
   gobernable.
 - `soluciones/aws_practice_nivel_2.rs`: solución del ejercicio intermedio de

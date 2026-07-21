@@ -32,3 +32,5 @@
   - [Ejercicios: AWS en la práctica](./ejercicios/09-aws-en-la-practica.md)
   - [Costos: AWS en la práctica](./costos/09-aws-en-la-practica.md)
 - [GCP en la práctica](./10-gcp-en-la-practica.md)
+  - [Ejercicios: GCP en la práctica](./ejercicios/10-gcp-en-la-practica.md)
+  - [Costos: GCP en la práctica](./costos/10-gcp-en-la-practica.md)
