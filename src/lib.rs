@@ -5,6 +5,7 @@
 //! agregarán módulos por concepto de cloud conforme a RFC-0001 §14.
 
 pub mod compute;
+pub mod networking;
 pub mod service_models;
 pub mod storage;
 
@@ -68,7 +69,7 @@ const PLANNED_CHAPTERS: [Chapter; 10] = [
     Chapter {
         number: 4,
         title: "Redes y VPC",
-        status: ChapterStatus::Draft,
+        status: ChapterStatus::Implemented,
     },
     Chapter {
         number: 5,
@@ -121,12 +122,12 @@ mod tests {
         assert!(
             chapters
                 .iter()
-                .skip(4)
+                .skip(5)
                 .all(|chapter| chapter.status == ChapterStatus::Planned)
         );
         assert_eq!(chapters[0].status, ChapterStatus::Implemented);
         assert_eq!(chapters[1].status, ChapterStatus::Implemented);
         assert_eq!(chapters[2].status, ChapterStatus::Implemented);
-        assert_eq!(chapters[3].status, ChapterStatus::Draft);
+        assert_eq!(chapters[3].status, ChapterStatus::Implemented);
     }
 }
