@@ -74,5 +74,6 @@ esperada es:
 
 ## Siguiente paso natural
 
-Completar el milestone `08. Costos y FinOps` con ejercicios graduados,
-soluciones compilables y análisis de costos sin precios vivos de proveedor.
+Continuar con el milestone `09. AWS en la práctica`, manteniendo la regla del
+curso: primero conceptos transferibles, después aterrizaje por proveedor sin
+convertir el capítulo en catálogo de consola.

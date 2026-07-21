@@ -4,10 +4,12 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 08. Costos y FinOps
-- **Issues:** #29, #30, #31
+- **Issues:** #29, #30, #31, #32
 - **Módulo Rust:** `src/finops.rs`
 - **Diagrama:** `diagrams/08-costos-y-finops.mmd`
 - **Ejemplo:** `examples/finops.rs`
+- **Ejercicios:** `docs/ejercicios/08-costos-y-finops.md`
+- **Costos:** `docs/costos/08-costos-y-finops.md`
 
 ## Concepto
 
@@ -271,6 +273,15 @@ permite tomar.
   atribución y unidad económica.
 - `FinOpsFinding` hace visibles costos sin dueño, propósito, unidad económica,
   presupuesto, límite o visibilidad suficiente.
+
+## Ejercicios y costos
+
+Los ejercicios viven en `docs/ejercicios/08-costos-y-finops.md` y tienen
+soluciones compilables en `examples/soluciones/finops_nivel_*.rs`.
+
+El análisis de costos vive en `docs/costos/08-costos-y-finops.md`. No usa
+precios de proveedor ni agrega benchmarks: compara atribución, unidad
+económica, elasticidad, observabilidad, presupuestos, ambientes y desperdicio.
 
 ## Práctica sugerida
 

@@ -26,5 +26,7 @@
   - [Ejercicios: serverless](./ejercicios/07-serverless.md)
   - [Costos: serverless](./costos/07-serverless.md)
 - [Costos y FinOps](./08-costos-y-finops.md)
+  - [Ejercicios: costos y FinOps](./ejercicios/08-costos-y-finops.md)
+  - [Costos: costos y FinOps](./costos/08-costos-y-finops.md)
 - [AWS en la práctica](./09-aws-en-la-practica.md)
 - [GCP en la práctica](./10-gcp-en-la-practica.md)
