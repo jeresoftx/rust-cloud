@@ -5,6 +5,7 @@
 //! agregarán módulos por concepto de cloud conforme a RFC-0001 §14.
 
 pub mod compute;
+pub mod finops;
 pub mod iam;
 pub mod managed_services;
 pub mod networking;
@@ -92,7 +93,7 @@ const PLANNED_CHAPTERS: [Chapter; 10] = [
     Chapter {
         number: 8,
         title: "Costos y FinOps",
-        status: ChapterStatus::Draft,
+        status: ChapterStatus::Implemented,
     },
     Chapter {
         number: 9,
@@ -135,6 +136,6 @@ mod tests {
         assert_eq!(chapters[4].status, ChapterStatus::Implemented);
         assert_eq!(chapters[5].status, ChapterStatus::Implemented);
         assert_eq!(chapters[6].status, ChapterStatus::Implemented);
-        assert_eq!(chapters[7].status, ChapterStatus::Draft);
+        assert_eq!(chapters[7].status, ChapterStatus::Implemented);
     }
 }

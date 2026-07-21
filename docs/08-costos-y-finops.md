@@ -2,9 +2,9 @@
 
 - **Curso:** rust-cloud
 - **Semestre:** 5
-- **Estado:** draft
+- **Estado:** implemented
 - **Milestone:** 08. Costos y FinOps
-- **Issues:** #29
+- **Issues:** #29, #30
 - **Módulo Rust:** `src/finops.rs`
 
 ## Concepto
@@ -99,28 +99,99 @@ RFC-0001 §10: proveedor después de fundamentos.
 | Señal de uso | Cuándo investigar | Acción adecuada | Alertar tarde o sin dueño |
 | Tradeoff | Qué riesgo se acepta | Ahorro garantizado | Romper confiabilidad por ahorrar |
 
-## Requisitos para `src/finops.rs`
+## Modelo Rust mínimo
 
-El módulo Rust mínimo deberá modelar, sin dependencias externas:
+El módulo Rust mínimo vive en `src/finops.rs` y modela, sin dependencias
+externas:
 
 - unidades educativas de costo: cómputo, almacenamiento, red, observabilidad,
   invocaciones y servicios manejados;
 - dueño, propósito y ambiente del gasto;
 - frecuencia o intensidad de uso;
 - criticidad y elasticidad;
-- hallazgos cuando falten dueño, propósito, límite, señal de uso o ambiente;
+- hallazgos cuando falten dueño, propósito, presupuesto, unidad económica o
+  visibilidad suficiente;
 - evaluación de riesgos por gasto no atribuido, elasticidad sin límite,
   observabilidad excesiva o recursos constantes sobredimensionados.
 
 El módulo no debe intentar calcular precios reales. Su función es pedagógica:
 hacer visibles las variables que explican por qué aparece un costo.
 
-## Decisiones pendientes
+## Cómo leer el módulo Rust
 
-- Definir si la unidad de costo será enum cerrado o perfil extensible.
-- Definir cómo representar intensidad de uso sin prometer estimaciones reales.
-- Nombrar hallazgos públicos antes de escribir ejemplos.
-- Decidir qué umbrales educativos son suficientes sin depender de proveedor.
+El módulo `finops` empieza con un perfil explícito:
+
+```rust
+use rust_cloud::finops::{
+    BudgetControl, CostCategory, CostVisibility, ElasticityLimit, Environment,
+    FinOpsCriticality, FinOpsProfile, FinOpsRequirements, OptimizationIntent,
+    UsagePattern,
+};
+
+let profile = FinOpsProfile::new(
+    "academy-api",
+    FinOpsRequirements {
+        category: CostCategory::Compute,
+        environment: Environment::Production,
+        usage_pattern: UsagePattern::Steady,
+        criticality: FinOpsCriticality::High,
+        elasticity: ElasticityLimit::Bounded { max_units: 20 },
+        visibility: CostVisibility::UnitEconomics,
+        budget_control: BudgetControl::ForecastAndReview,
+        optimization_intent: OptimizationIntent::ReduceWaste,
+        owner: "equipo academy",
+        purpose: "servir rutas de aprendizaje a estudiantes",
+        unit_economics: "costo por estudiante activo",
+    },
+)
+.unwrap();
+
+assert!(profile.evaluate().is_low_risk());
+```
+
+Un costo sin dueño, sin unidad económica y con elasticidad sin límite produce
+hallazgos:
+
+```rust
+use rust_cloud::finops::{
+    BudgetControl, CostCategory, CostVisibility, ElasticityLimit, Environment,
+    FinOpsCriticality, FinOpsFinding, FinOpsProfile, FinOpsRequirements,
+    OptimizationIntent, UsagePattern,
+};
+
+let profile = FinOpsProfile::new(
+    "preview-workers",
+    FinOpsRequirements {
+        category: CostCategory::Invocations,
+        environment: Environment::Development,
+        usage_pattern: UsagePattern::Growing,
+        criticality: FinOpsCriticality::Medium,
+        elasticity: ElasticityLimit::Unbounded,
+        visibility: CostVisibility::Aggregate,
+        budget_control: BudgetControl::None,
+        optimization_intent: OptimizationIntent::None,
+        owner: "",
+        purpose: "ejecutar previews automáticos",
+        unit_economics: "",
+    },
+)
+.unwrap();
+
+assert!(profile.evaluate().findings().contains(
+    &FinOpsFinding::UnboundedElasticity("preview-workers"),
+));
+```
+
+## Decisiones registradas
+
+- El perfil principal se llama `FinOpsProfile`.
+- Las categorías educativas viven en `CostCategory`.
+- La elasticidad se modela con `ElasticityLimit` para distinguir recursos no
+  elásticos, recursos acotados y crecimiento sin límite visible.
+- La visibilidad se modela con `CostVisibility`, separando gasto agregado de
+  atribución y unidad económica.
+- `FinOpsFinding` hace visibles costos sin dueño, propósito, unidad económica,
+  presupuesto, límite o visibilidad suficiente.
 
 ## Práctica sugerida
 
@@ -141,4 +212,5 @@ optimizarlo: primero debes entenderlo.
 
 ## Estado editorial
 
-Este capítulo queda en `draft`. No está marcado como `reviewed` ni `published`.
+Este capítulo queda en `implemented`. No está marcado como `reviewed` ni
+`published`.
