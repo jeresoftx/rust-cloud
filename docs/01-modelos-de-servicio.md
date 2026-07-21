@@ -2,9 +2,9 @@
 
 - **Curso:** rust-cloud
 - **Semestre:** 5
-- **Estado:** draft
+- **Estado:** implemented
 - **Milestone:** 01. Modelos de servicio
-- **Issue:** #1
+- **Issues:** #1, #2
 - **Módulo Rust:** `src/service_models.rs`
 
 ## Concepto
@@ -80,7 +80,7 @@ proveedores aparecen como ejemplos, no como fuente de verdad.
 
 ## Requisitos funcionales del modelo Rust
 
-El módulo `src/service_models.rs` debe representar, en una primera versión:
+El módulo `src/service_models.rs` representa, en una primera versión:
 
 - modelos de servicio;
 - capas de responsabilidad;
@@ -96,13 +96,19 @@ El módulo `src/service_models.rs` debe representar, en una primera versión:
 - Pruebas para las reglas pequeñas del reparto de responsabilidad.
 - Código pequeño: el objetivo es enseñar el contrato, no simular un proveedor.
 
-## Decisiones pendientes para el siguiente issue
+## Decisiones registradas en el modelo Rust
 
-- Nombrar las capas exactas del modelo Rust.
-- Decidir si `Serverless` se modela como modelo separado o como variante de
-  PaaS con responsabilidad de capacidad delegada.
-- Definir qué dimensiones de comparación serán enum o puntaje educativo.
+- Las capas del modelo son: instalaciones físicas, red física, cómputo físico,
+  virtualización, sistema operativo, runtime, código de aplicación, datos de
+  aplicación y política de escalado.
+- `Serverless` se modela como modelo separado. Aunque comparte delegación de
+  plataforma con PaaS, su frontera educativa cambia por eventos, capacidad y
+  escalado delegados.
+- Control, carga operativa y portabilidad se representan como puntajes
+  educativos (`Low`, `Medium`, `High`), no como métricas reales.
+- Una recomendación sin supuestos mínimos devuelve error explícito.
 
 ## Estado editorial
 
-Este capítulo está en `draft`. No está marcado como `reviewed` ni `published`.
+Este capítulo está en `implemented`. No está marcado como `reviewed` ni
+`published`.
