@@ -45,7 +45,7 @@ esperada es:
 | 01 | Modelos de servicio | implemented |
 | 02 | Cómputo | implemented |
 | 03 | Almacenamiento | implemented |
-| 04 | Redes y VPC | draft |
+| 04 | Redes y VPC | implemented |
 | 05 | Identidad y accesos | planned |
 | 06 | Servicios manejados | planned |
 | 07 | Serverless | planned |
@@ -74,6 +74,6 @@ esperada es:
 
 ## Siguiente paso natural
 
-Trabajar el primer milestone, `01. Modelos de servicio`, con el flujo completo:
-especificación conceptual, modelo Rust mínimo, capítulo/diagrama/ejemplos,
-ejercicios, soluciones y análisis de costos.
+Completar el milestone `04. Redes y VPC` con el flujo restante del capítulo:
+capítulo narrativo, diagrama Mermaid, ejemplos progresivos, ejercicios,
+soluciones y análisis de costos.

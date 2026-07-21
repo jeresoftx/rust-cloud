@@ -2,9 +2,9 @@
 
 - **Curso:** rust-cloud
 - **Semestre:** 5
-- **Estado:** draft
+- **Estado:** implemented
 - **Milestone:** 04. Redes y VPC
-- **Issue:** #13
+- **Issue:** #14
 - **Módulo Rust:** `src/networking.rs`
 
 ## Concepto
@@ -73,9 +73,10 @@ el currículum debe formar criterio de ingeniería, no solo memoria operativa.
 - Los límites, precios y nombres de proveedor son material vivo y deben
   revisarse cuando se usen ejemplos fechados.
 
-## Requisitos para `src/networking.rs`
+## Modelo Rust mínimo
 
-El módulo Rust mínimo deberá modelar, sin dependencias externas:
+El módulo Rust mínimo vive en `src/networking.rs` y modela, sin dependencias
+externas:
 
 - redes virtuales con nombre y rango de direcciones educativo;
 - subredes con rol, zona lógica y relación con la red virtual;
@@ -88,13 +89,16 @@ El módulo no debe intentar simular paquetes reales ni reemplazar herramientas d
 red. Su función es pedagógica: hacer ejecutables los conceptos del capítulo y
 permitir pruebas unitarias claras.
 
-## Decisiones pendientes
+## Decisiones registradas
 
-- Definir si el rango de direcciones se modela como texto validado o como tipo
-  educativo de CIDR.
-- Definir la granularidad inicial de rutas y reglas de tráfico.
-- Nombrar los errores públicos del módulo antes de escribir ejemplos.
+- El rango de direcciones se modela como `CidrBlock`, un tipo educativo de
+  CIDR IPv4 validado sin dependencias externas.
+- Las rutas declaran destino, siguiente salto y propósito.
+- Las reglas de firewall declaran origen, destino, protocolo, puerto y
+  propósito humano.
+- SSH público desde Internet se rechaza como diseño base del capítulo.
 
 ## Estado editorial
 
-Este capítulo queda en `draft`. No está marcado como `reviewed` ni `published`.
+Este capítulo queda en `implemented`. No está marcado como `reviewed` ni
+`published`.
