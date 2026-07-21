@@ -56,7 +56,7 @@
       "number": 4,
       "title": "Redes y VPC",
       "slug": "redes-y-vpc",
-      "status": "planned",
+      "status": "draft",
       "milestone": "04. Redes y VPC",
       "document": "docs/04-redes-y-vpc.md",
       "module": "src/networking.rs",
