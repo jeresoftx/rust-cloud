@@ -4,6 +4,9 @@ Esta checklist se usa antes de marcar un capítulo como `reviewed` o
 `published`. La IA puede acelerar borradores, diagramas, pruebas y andamiaje,
 pero el criterio humano decide qué queda aprobado (RFC-0001 §20).
 
+Para revisar el curso completo como corte editorial, usa también
+`docs/guia-revision-corte.md`.
+
 ## Identificación
 
 - Capítulo:

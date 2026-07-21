@@ -12,6 +12,8 @@ dejar evidencia para la revisión humana de Joel.
 La bitácora de PRs fusionados en modo autónomo vive en
 `docs/bitacora-revision-diferida.md`.
 
+La guía para revisar el corte completo vive en `docs/guia-revision-corte.md`.
+
 ## Alcance del corte
 
 El corte incluye:
