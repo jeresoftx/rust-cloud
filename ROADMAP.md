@@ -74,6 +74,5 @@ esperada es:
 
 ## Siguiente paso natural
 
-Completar el milestone `07. Serverless` con el flujo restante: capítulo
-narrativo, diagrama Mermaid, ejemplos progresivos, ejercicios, soluciones y
-análisis de costos.
+Completar el milestone `07. Serverless` con el flujo restante: ejercicios,
+soluciones y análisis de costos.

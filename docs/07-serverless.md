@@ -4,8 +4,10 @@
 - **Semestre:** 5
 - **Estado:** implemented
 - **Milestone:** 07. Serverless
-- **Issues:** #25, #26
+- **Issues:** #25, #26, #27
 - **Módulo Rust:** `src/serverless.rs`
+- **Diagrama:** `diagrams/07-serverless.mmd`
+- **Ejemplo:** `examples/serverless.rs`
 
 ## Concepto
 
@@ -18,6 +20,21 @@ En este curso, serverless se estudia como una decisión de acoplamiento entre
 evento, función, límite, estado y operación. La pregunta central no es "¿qué
 función puedo subir?", sino "¿qué evento dispara qué trabajo, con qué límites,
 qué estado toca, qué pasa si falla y qué costo aparece al escalar?".
+
+## Imagen mental
+
+Piensa en una cocina de pedidos rápidos.
+
+- El **evento** es la orden que entra.
+- La **función** es la estación que prepara una parte del pedido.
+- El **timeout** es el tiempo máximo antes de cancelar la preparación.
+- La **concurrencia** es cuántas órdenes se aceptan al mismo tiempo.
+- El **retry** es volver a intentar una orden fallida.
+- La **idempotencia** evita cobrar, guardar o enviar dos veces por el mismo
+  evento.
+
+La metáfora sirve para recordar que serverless no es ausencia de operación. Es
+operación movida a otro contrato: eventos, límites, reintentos y observabilidad.
 
 ## Problema
 
@@ -92,6 +109,122 @@ externas:
 El módulo no debe intentar simular una plataforma serverless real. Su función es
 pedagógica: hacer visible el contrato de ejecución antes de hablar de AWS Lambda,
 Cloud Functions, Cloud Run, workflows u otros productos.
+
+## Comparación educativa
+
+| Elemento | Qué decide | Qué no decide por sí solo | Riesgo común |
+|----------|------------|----------------------------|--------------|
+| Trigger | Qué inicia la ejecución | Idempotencia | Tratar todo evento como único |
+| Runtime | Cómo se empaqueta el trabajo | Diseño del flujo | Usar función para procesos largos |
+| Timeout | Cuánto puede durar | Latencia aceptable | Ocultar lentitud subiendo el límite |
+| Concurrencia | Cuánto escala a la vez | Capacidad downstream | Saturar bases, APIs o colas |
+| Retry | Cómo reacciona a falla | Seguridad de repetir | Duplicar efectos secundarios |
+| Estado | Qué se lee o escribe fuera | Consistencia real | Guardar estado implícito en la función |
+| Observabilidad | Qué se puede investigar | Corrección automática | Ver logs sin correlación de evento |
+
+## Cómo leer el módulo Rust
+
+El módulo `serverless` empieza con requerimientos explícitos:
+
+```rust
+use rust_cloud::serverless::{
+    IdempotencyStrategy, ObservabilityPlan, RetryPolicy, RuntimeProfile,
+    ServerlessRequirements, ServerlessWorkload, StateAccess, TriggerKind,
+};
+
+let workload = ServerlessWorkload::new(
+    "process-publication",
+    ServerlessRequirements {
+        trigger: TriggerKind::Queue,
+        runtime: RuntimeProfile::Function,
+        timeout_seconds: Some(30),
+        max_concurrency: Some(50),
+        retry_policy: RetryPolicy::Backoff { attempts: 3 },
+        idempotency: IdempotencyStrategy::EventKey,
+        state_access: StateAccess::ExternalWrite,
+        observability: ObservabilityPlan::standard(),
+        purpose: "procesar eventos de publicación de contenido",
+    },
+)
+.unwrap();
+
+assert!(workload.evaluate().is_low_risk());
+```
+
+Una función que reintenta, escribe estado y no declara idempotencia produce
+hallazgos:
+
+```rust
+use rust_cloud::serverless::{
+    IdempotencyStrategy, ObservabilityPlan, RetryPolicy, RuntimeProfile,
+    ServerlessFinding, ServerlessRequirements, ServerlessWorkload,
+    StateAccess, TriggerKind,
+};
+
+let workload = ServerlessWorkload::new(
+    "charge-payment",
+    ServerlessRequirements {
+        trigger: TriggerKind::Http,
+        runtime: RuntimeProfile::Function,
+        timeout_seconds: Some(120),
+        max_concurrency: None,
+        retry_policy: RetryPolicy::Fixed { attempts: 2 },
+        idempotency: IdempotencyStrategy::None,
+        state_access: StateAccess::ExternalWrite,
+        observability: ObservabilityPlan::none(),
+        purpose: "registrar pago de estudiante",
+    },
+)
+.unwrap();
+
+assert!(workload.evaluate().findings().contains(
+    &ServerlessFinding::RetryWithoutIdempotency("charge-payment"),
+));
+```
+
+El objetivo del modelo no es imitar Lambda, Cloud Run o Workflows. El objetivo
+es obligar a nombrar evento, límite, retry, idempotencia, estado y señales de
+observabilidad antes de convertir el flujo en infraestructura.
+
+## Diagrama
+
+El diagrama del capítulo vive en `diagrams/07-serverless.mmd`. Resume la
+lectura principal:
+
+```text
+trigger -> workload -> límites -> retry/idempotencia -> evaluación
+```
+
+## Ejemplo ejecutable
+
+El ejemplo `examples/serverless.rs` compara un handler de cola con idempotencia
+contra una función HTTP riesgosa que reintenta, escribe estado y no declara
+observabilidad suficiente.
+
+```bash
+cargo run --example serverless
+```
+
+El ejemplo no contacta proveedores ni ejecuta funciones reales. Su intención es
+mostrar qué decisiones deben quedar visibles antes de elegir un runtime
+serverless.
+
+## Práctica sugerida
+
+Antes de diseñar un flujo serverless, escribe:
+
+1. Evento: qué dispara la ejecución.
+2. Propósito: qué trabajo legítimo realiza.
+3. Timeout: cuánto puede durar antes de fallar.
+4. Concurrencia: qué límite protege a dependencias downstream.
+5. Retry: cuántos intentos existen y con qué backoff.
+6. Idempotencia: cómo se evita duplicar efectos secundarios.
+7. Estado: qué se lee o escribe fuera de la función.
+8. Observabilidad: logs, métricas y correlación por evento.
+9. Costo: qué pasa si llegan miles o millones de eventos.
+
+Si un flujo reintenta y escribe estado sin idempotencia, todavía no debería
+considerarse listo para producción.
 
 ## Decisiones registradas
 

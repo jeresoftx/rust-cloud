@@ -84,6 +84,10 @@ name = "managed_services_nivel_3"
 path = "examples/soluciones/managed_services_nivel_3.rs"
 
 [[example]]
+name = "serverless"
+path = "examples/serverless.rs"
+
+[[example]]
 name = "networking_nivel_1"
 path = "examples/soluciones/networking_nivel_1.rs"
 

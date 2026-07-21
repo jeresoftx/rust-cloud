@@ -21,6 +21,8 @@ Los ejemplos progresivos de cada capítulo vivirán aquí:
   administración amplia que revela hallazgos educativos.
 - `managed_services.rs`: compara servicios manejados por responsabilidad
   delegada, estado durable y recuperación probada.
+- `serverless.rs`: compara un flujo serverless acotado con una función que
+  revela riesgos de retry, estado y observabilidad.
 - `soluciones/managed_services_nivel_1.rs`: solución del ejercicio básico de
   base de datos manejada con restauración probada.
 - `soluciones/managed_services_nivel_2.rs`: solución del ejercicio intermedio
