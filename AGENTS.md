@@ -56,6 +56,11 @@ issues de GitHub:
 - cada PR asignado a `jeresoftx`, asociado al milestone del issue y con labels;
 - no fusionar PR sin revisión humana, salvo autorización explícita de modo
   autónomo con revisión diferida.
+- si un bloque busca contar para Pair Extraordinaire de `jeresoftx`, el commit
+  debe llevar `Co-authored-by: Joel Alvarez Mexia
+  <139817810+jeresoftx@users.noreply.github.com>` y `jeresoftx` no debe ser el
+  autor principal; no se crean PRs vacíos ni se reescribe historial solo por
+  achievements.
 
 Si se usa GitHub Project, debe estar asociado al repositorio, contener todos los
 issues accionables y tener su vista principal agrupada por `Milestone`. No
