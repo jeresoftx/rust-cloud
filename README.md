@@ -9,6 +9,11 @@ razonar sobre plataformas: modelos de servicio, cómputo, almacenamiento, red,
 identidad, servicios manejados, serverless, costos y operación con decisiones
 explícitas.
 
+![Rust](https://img.shields.io/badge/Rust-2024-DEA584?logo=rust&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
+![Markdown](https://img.shields.io/badge/Markdown-000000?logo=markdown&logoColor=white)
+
 ## Qué contiene
 
 - Capítulos en Markdown compatibles con publicación posterior.
