@@ -47,6 +47,7 @@ Las validaciones usadas durante el corte fueron:
 - `node scripts/verify-cargo-examples.mjs`;
 - `node scripts/verify-chapter-anatomy.mjs`;
 - `node scripts/verify-review-packet-coverage.mjs`;
+- `node scripts/verify-deferred-review-log.mjs`;
 - `node scripts/verify-editorial-status.mjs`;
 - `node scripts/verify-gate-sync.mjs`;
 - `cargo fmt --check`;
