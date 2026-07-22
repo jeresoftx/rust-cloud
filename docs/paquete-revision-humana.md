@@ -31,7 +31,9 @@ node scripts/verify-course-links.mjs
 node scripts/verify-manifest-consistency.mjs
 node scripts/verify-cargo-examples.mjs
 node scripts/verify-chapter-anatomy.mjs
+node scripts/verify-review-packet-coverage.mjs
 node scripts/verify-editorial-status.mjs
+node scripts/verify-gate-sync.mjs
 cargo fmt --check
 cargo clippy --all-targets --all-features -- -D warnings
 cargo test --all-targets
@@ -39,6 +41,9 @@ cargo test --doc
 cargo bench --all-targets
 git diff --check
 ```
+
+El check remoto `rust` en GitHub Actions también debe pasar antes de cerrar la
+revisión del corte.
 
 ## Preguntas por capítulo
 
