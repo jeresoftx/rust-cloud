@@ -32,6 +32,11 @@ aprobación editorial, no publica el curso y no cambia capítulos a `reviewed` n
 | #115 | #114 | Verificador de anatomía editorial de capítulos. |
 | #116 | #110 | Paquete de revisión humana por capítulo. |
 | #117 | #113 | Verificador de cobertura del paquete de revisión humana. |
+| #118 | #112 | Higiene obligatoria para ramas, commits únicos y PRs autónomos. |
+| #121 | #120 | Guía de revisión alineada con las compuertas actuales. |
+| #122 | #119 | Verificador de sincronía entre listas de compuertas documentadas. |
+| #125 | #123 | Checklist por capítulo alineada con la evidencia mínima del corte. |
+| #126 | #124 | Checklist por capítulo protegida por la sincronía de compuertas. |
 
 ## Evidencia técnica
 
@@ -43,6 +48,7 @@ Las validaciones usadas durante el corte fueron:
 - `node scripts/verify-chapter-anatomy.mjs`;
 - `node scripts/verify-review-packet-coverage.mjs`;
 - `node scripts/verify-editorial-status.mjs`;
+- `node scripts/verify-gate-sync.mjs`;
 - `cargo fmt --check`;
 - `cargo clippy --all-targets --all-features -- -D warnings`;
 - `cargo test --all-targets`;
@@ -62,6 +68,18 @@ debe mostrar exactamente un commit en el PR.
 
 Estos incidentes no cambian el contenido del curso, no publican capítulos y no
 marcan nada como `reviewed` ni `published`.
+
+## Sincronía documental reciente
+
+Los PRs #121, #122, #125 y #126 dejaron alineadas las listas de compuertas en
+README, publicación candidata, guía de revisión, checklist por capítulo,
+paquete humano y matriz de compuertas. La compuerta
+`node scripts/verify-gate-sync.mjs` debe pasar antes de usar esta bitácora como
+evidencia del corte.
+
+Esta sincronía solo protege que la evidencia esté completa y consistente. No
+aprueba contenido, no publica el curso y no reemplaza la lectura humana de
+Joel.
 
 ## Decisiones que no tomó la IA
 
