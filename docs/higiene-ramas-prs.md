@@ -21,11 +21,33 @@ Cada PR autónomo debe resolver un solo issue. El issue debe estar asignado a
 `jeresoftx`, tener milestone y labels coherentes. El PR debe conservar la misma
 asignación, milestone y labels, además de cerrar el issue con `Closes #N`.
 
-El commit principal y el squash merge deben incluir:
+## Coautoría para Pair Extraordinaire
+
+Si el objetivo explícito del bloque es que el achievement Pair Extraordinaire
+cuente para `jeresoftx`, `jeresoftx` no debe quedar como autor principal del
+commit. GitHub atribuye el achievement al usuario que aparece como coautor
+válido, siempre que el correo del trailer `Co-authored-by` pertenezca a esa
+cuenta.
+
+Por eso, para que cuente hacia `jeresoftx`, el commit principal y el squash
+merge deben incluir:
+
+```text
+Co-authored-by: Joel Alvarez Mexia <139817810+jeresoftx@users.noreply.github.com>
+```
+
+No usar para ese objetivo:
 
 ```text
 Co-authored-by: Joel Alvarez D. <124008575+joelalvarezduenas@users.noreply.github.com>
 ```
+
+Ese correo pertenece a otra identidad y puede atribuir la coautoría fuera de
+`jeresoftx`.
+
+Esta regla no justifica PRs vacíos, commits artificiales ni cambios sin valor.
+Los achievements son secundarios; la trazabilidad, la calidad del curso y la
+revisión humana siguen siendo la prioridad.
 
 ## Antes de crear el PR
 
@@ -55,7 +77,8 @@ Antes del squash merge, el agente debe confirmar:
 - el PR tiene labels coherentes;
 - el check remoto aplicable está en verde;
 - el cuerpo del PR declara que se fusiona en modo de revisión diferida;
-- el squash merge preserva `Closes #N` y el `Co-authored-by`.
+- el squash merge preserva `Closes #N` y el `Co-authored-by` correcto para el
+  objetivo de coautoría declarado.
 
 Un PR con commits de issues anteriores no debe fusionarse. Primero se corrige
 la rama y se vuelve a verificar la metadata.
@@ -73,6 +96,7 @@ Reglas para manejar duplicados:
   documenta como higiene de proceso;
 - no se deben fusionar PRs vacíos deliberadamente para aumentar conteos de
   achievements;
+- no se debe reescribir historial solo para corregir un achievement;
 - el siguiente PR debe salir desde `main` actualizado y volver a pasar las
   comprobaciones de un solo commit.
 
