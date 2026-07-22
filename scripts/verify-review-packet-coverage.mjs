@@ -34,6 +34,7 @@ for (const command of [
   "node scripts/verify-cargo-examples.mjs",
   "node scripts/verify-chapter-anatomy.mjs",
   "node scripts/verify-editorial-status.mjs",
+  "node scripts/verify-gate-sync.mjs",
   "cargo fmt --check",
   "cargo clippy --all-targets --all-features -- -D warnings",
   "cargo test --all-targets",

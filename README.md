@@ -98,7 +98,12 @@ node scripts/verify-cargo-examples.mjs
 node scripts/verify-chapter-anatomy.mjs
 node scripts/verify-review-packet-coverage.mjs
 node scripts/verify-editorial-status.mjs
+node scripts/verify-gate-sync.mjs
+git diff --check
 ```
+
+Además, el check remoto `rust` en GitHub Actions debe pasar antes de considerar
+listo cualquier corte o PR autónomo.
 
 ## Gobernanza
 
