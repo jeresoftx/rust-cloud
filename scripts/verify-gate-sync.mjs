@@ -26,6 +26,7 @@ const documents = [
   ["README.md", "README"],
   ["docs/publicacion-candidata.md", "publicación candidata"],
   ["docs/guia-revision-corte.md", "guía de revisión"],
+  ["docs/checklist-revision-capitulo.md", "checklist por capítulo"],
   ["docs/paquete-revision-humana.md", "paquete humano"],
   ["docs/compuertas-automaticas.md", "matriz de compuertas"],
 ];
