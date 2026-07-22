@@ -30,6 +30,7 @@ posterior, deben pasar las compuertas actuales:
 - [ ] `node scripts/verify-cargo-examples.mjs` pasa.
 - [ ] `node scripts/verify-chapter-anatomy.mjs` pasa.
 - [ ] `node scripts/verify-review-packet-coverage.mjs` pasa.
+- [ ] `node scripts/verify-deferred-review-log.mjs` pasa.
 - [ ] `node scripts/verify-editorial-status.mjs` pasa.
 - [ ] `node scripts/verify-gate-sync.mjs` pasa.
 - [ ] `cargo fmt --check` pasa.

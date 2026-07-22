@@ -17,6 +17,7 @@ jobs:
       - run: node scripts/verify-cargo-examples.mjs
       - run: node scripts/verify-chapter-anatomy.mjs
       - run: node scripts/verify-review-packet-coverage.mjs
+      - run: node scripts/verify-deferred-review-log.mjs
       - run: node scripts/verify-editorial-status.mjs
       - run: node scripts/verify-gate-sync.mjs
       - run: cargo fmt --check
