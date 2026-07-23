@@ -44,6 +44,26 @@ Esta regla no justifica PRs vacíos, commits artificiales ni cambios sin valor.
 Los achievements son secundarios; la trazabilidad, la calidad del curso y la
 revisión humana siguen siendo la prioridad.
 
+### Flujo revisable validado
+
+Cuando la contribución de una segunda identidad requiera revisión humana, se
+usa este flujo completo:
+
+1. La autora principal crea una rama desde `main` actualizado y registra el
+   cambio real con el trailer `Co-authored-by` de la identidad colaboradora.
+2. El PR se asigna a `jeresoftx`, conserva el milestone y los labels del issue,
+   y solicita revisión de la identidad coautora.
+3. La identidad coautora revisa el cambio en GitHub. No se fusiona con una
+   solicitud pendiente ni con una aprobación ausente.
+4. Después de la aprobación humana y de las compuertas en verde, el squash
+   merge conserva tanto `Closes #N` como el trailer `Co-authored-by`.
+
+El [PR #136](https://github.com/jeresoftx/rust-cloud/pull/136) valida este
+flujo: fue asignado a `jeresoftx`, revisado y aprobado por
+`joelalvarezduenas`, y fusionado solo después de esa aprobación. Este patrón
+documenta colaboración real; no autoriza crear trabajo artificial para obtener
+achievements.
+
 ## Antes de crear el PR
 
 El agente debe verificar que la rama nace de `main` actualizado y que solo

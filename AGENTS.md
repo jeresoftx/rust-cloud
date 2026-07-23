@@ -62,6 +62,9 @@ issues de GitHub:
   <139817810+jeresoftx@users.noreply.github.com>`; `joelalvarezduenas` usa
   `Joel Alvarez D. <124008575+joelalvarezduenas@users.noreply.github.com>`.
   No se crean PRs vacíos ni se reescribe historial solo por achievements.
+- cuando una coautoría requiera revisión humana, el PR se asigna a
+  `jeresoftx`, solicita revisión de la identidad coautora y solo se fusiona
+  después de su aprobación y de las compuertas aplicables en verde.
 
 Si se usa GitHub Project, debe estar asociado al repositorio, contener todos los
 issues accionables y tener su vista principal agrupada por `Milestone`. No
